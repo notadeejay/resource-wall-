@@ -1,3 +1,28 @@
-.addNew {
-    background-color: pink;
+.innerContent {
+    padding: 25px;
+    background-color: gray;
+    height: 500px;
+    margin-top: 50px !important;
+    max-width: 960px;
+    margin: auto;
+    text-align: center;
+}
+
+h2 {
+    padding: 25px;
+}
+
+form {
+    margin-top: 50px;
+}
+
+form input {
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+form button {
+    margin: 15px;
 }
