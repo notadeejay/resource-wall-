@@ -5,26 +5,44 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/article.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/vendor/salvattore.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
-  <header>
+
+  <body>
+  <header style="position: fixed; width: 100%;  z-index: 999;">
     <% include partials/_nav %>
   </header>
-  <body>
-    
-    <div class="row">
-        <div class="col-md-2 sidebar">
-            <div class="affix">
-                sidebar
+        <div style="position: relative; height: 100%;">
+            <div class="sidebar" style="width: 300px; position: fixed; height: 100%;">
+                Bless up. To be successful you’ve got to work hard, to make history, simple, you’ve got to make it. You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean.
+                
+                You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? Life is what you make it, so let’s make it. Special cloth alert. You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up. To succeed you must believe. When you believe, you will succeed. Congratulations, you played yourself.
+
+            </div>
+            <div class="main" style="left: 300px; right: 0px; position: absolute; ">
+                
+                <article>
+                    <div class = 'articleHeader'>
+                        <h5>bookmark #1</h5>
+                    </div>
+                    <div class = 'articleBody'>
+                        body
+                    </div>
+                    <div class = 'articleFooter'>
+                        footer
+                    </footer>
+                </article>
+                
+                
             </div>
         </div>
-        <div class="col-md-10 main">main</div>
-    </div>
 
 
   </body>

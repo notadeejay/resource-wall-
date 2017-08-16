@@ -37,29 +37,27 @@ header {
 }
 
 .navbar-brand {
-  margin-left: 150px;
+  margin-left: 100px;
 }
 
 .nav-link {
-  margin-right: 150px;
-  
+  margin-right: 100px; 
 }
 
 .sidebar {
   padding-top: 25px;
-  margin-top: 75px;
   text-align: center;
-  height: 100vh;
+  padding: 25px;
+  margin-top: 75px;
   background-color: #212121;
-  border-right: 1px solid white;
   color: white;
 }
 
 .main {
   padding-top: 25px;  
-  margin-top: 75px;  
-  text-align: center;
-  height: 100vh;  
-  background-color: dimgray;
+  min-height: calc(100vh - 75px);
+  margin-top: 75px;
+  padding: 25px;
+  background-color: #515151;
   color: white;
 }
