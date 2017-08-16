@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const session = require('express-session')
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -35,6 +36,11 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+app.use(session({
+  name: 'session',
+  secret: 'latr'
+}));
+
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 
@@ -53,10 +59,11 @@ app.get("/resources/:user_id", (req, res) => {
 });
 
 app.get("/resources/new", (req, res) => {
-  res.render("newResources");
+  res.render("newResource");
 });
 
 app.get("/:user_id", (req, res) => {
+  let user_id = req.session.user.id;
   res.render("profile");
 });
 
