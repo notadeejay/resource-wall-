@@ -16,8 +16,10 @@ exports.seed = function(knex, Promise) {
             url:  'https://www.stackoverflow.com'}),
         knex('resources').insert(
           {
-            id: 1,
-            title:  'Google Homepage',
-            description: 'Dev Necessity',
-            url:  'https://www.google.ca'})
-        )
+            id: 3,
+            title:  'Lighthouse Labs Homepage',
+            description: 'Ultimate dev bootcamp',
+            url:  'https://www.lighthouselabs.ca'})
+        ]);
+      });
+};
