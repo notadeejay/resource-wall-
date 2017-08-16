@@ -7,12 +7,7 @@ const db = require('../lib/util/queries.js');
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        res.json(results);
-    });
+    db.getAllResources()
   });
 
 //ADD NEW USER TO DATABASE @ REGISTRATION
@@ -22,33 +17,39 @@ router.post("/", function (req, res) {
   let email = req.body.email
   let password = bcrypt.hashSync(req.body.password, 10)
 
-  db.addNewUser({
+  knex.addNewUser({
           first_name: firstname,
           last_name: lastname,
           email: email,
           password: password
-      });
+      }, () => {
+      res.redirect('/resources');
   });
 
 
 
 //LOGIN USER THAT IS ALREADY CREATED
-router.post("/login", function (req,res){
-  let email = req.body.email
-  let password = req.body.password
+// router.post("/login", function (req,res){
+//   let email = req.body.email
+//   let password = req.body.password
 
-});
+// });
 
 //LOGOUT & CLEAR COOKIE
-router.post("/logout", (req, res) => {
-//LOGOUT & REDIRECT
-  req.session = null;
-  res.status(201).send();
-});
+// router.post("/logout", (req, res) => {
+// //LOGOUT & REDIRECT
+//   req.session = null;
+//   res.status(201).send();
+// });
 
 //UPDATE USER PROFILE
-router.put("/:user_id", function (req,res) {
 
+router.post('/:id', (req, res) => {
+ let user = req.params.id
+
+ knex.updateProfile(user, req, () => {
+      response.redirect('/myresources');
+    });
 });
 
   return router;

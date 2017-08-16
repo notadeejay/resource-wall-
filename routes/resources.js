@@ -8,7 +8,7 @@ module.exports = (knex) => {
 
 //GET ALL RESOURCES
 router.get("/resources", (req, res) => {
-    knex
+     knex
       .select("*")
       .from("resources")
       .then((results) => {
@@ -18,13 +18,13 @@ router.get("/resources", (req, res) => {
 
   //ADD NEW RESOURCE TO DATABASE
   router.post("/", function (req, res) {
-    let newResource = {
+   knex.addNewResource({
       title: req.body.title
       description: req.body.description
       url: req.body.url
-      user_id: req.session.user.id
-    }
-
+      user_id: req.session.id
+    }, () => {
+      res.redirect('/resources');
   });
 
   //DELETE A RESOURCE
@@ -36,7 +36,7 @@ router.get("/resources", (req, res) => {
   router.get("/resources", function (req,res) {
     let user = req.session.user.id
 
-    db.getAllResourcesForUser(user, (urls) => {
+    knex.getAllResourcesForUser(user, (urls) => {
         response.render('myresources', {
           urls: urls
         });
