@@ -53,7 +53,7 @@ app.get("/resources/:user_id", (req, res) => {
 });
 
 app.get("/resources/new", (req, res) => {
-  res.render("newResources");
+  res.render("newResource");
 });
 
 app.get("/:user_id", (req, res) => {

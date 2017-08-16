@@ -1,7 +1,65 @@
-body {
-  background-color: #EEE;
+* {
+  font-family: 'Open Sans', sans-serif; 
+}
 
-  h1 {
-    color: #244751;
-  }
+html {
+  background-color: #212121;
+  color: #ffffff;
+}
+
+body {
+  background-color: #212121;
+}
+
+header {
+  background-color: #212121;
+  color: white;
+}
+
+.navbar {
+  background-color: #212121;
+  margin: 0 auto;
+  min-height: 75px;
+  border-bottom: 1px solid white;  
+}
+
+.navbar-nav > li > .dropdown-menu { 
+  background-color: #212121;
+  border: 1px solid white;
+}
+
+.navbar-nav > li > .dropdown-menu > a {
+  color: white;
+}
+
+.navbar-nav > li > .dropdown-menu > a:hover {
+  color: #212121;
+}
+
+.navbar-brand {
+  margin-left: 150px;
+}
+
+.nav-link {
+  margin-right: 150px;
+  
+}
+
+.sidebar {
+  padding-top: 25px;
+  margin-top: 75px;
+  text-align: center;
+  height: 100vh;
+  background-color: #212121;
+  border-right: 1px solid white;
+  color: white;
+}
+
+.main {
+  padding-top: 25px;  
+  margin-top: 75px;  
+  text-align: center;
+  height: 100vh;  
+  background-color: dimgray;
+  color: white;
 }
