@@ -2,6 +2,7 @@
 
 
 module.exports = {
+
   getAllResources: (done) => {
     knex.select(*).from("resources")
     .then((results) => {
@@ -52,5 +53,34 @@ module.exports = {
       res.json(result);
     });
   },
+
+
+  addLikes: (resourceID, userID) => {
+     knex('likes')
+    .returning('*')
+    .insert({
+      user_id: userID,
+      resource_id: resourceID
+    })
+    .then( (result) => {
+      res.json(result);
+    })
+    .catch( (err) => {
+        throw err;
+    })
+},
+
+ removeLikes: (resourceID, userID) => {
+       knex('likes')
+      .where({'user_id': userID, 'resource_id': resourceID})
+      .del()
+      .then((result) => {
+        res.status(200).send();
+      })
+      .catch((err) => {
+        throw err;
+    })
+
+},
 
 }

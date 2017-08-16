@@ -1,5 +1,5 @@
 * {
-  font-family: 'Open Sans', sans-serif; 
+  font-family: 'Open Sans', sans-serif;
 }
 
 html {
@@ -20,10 +20,10 @@ header {
   background-color: #212121;
   margin: 0 auto;
   min-height: 75px;
-  border-bottom: 1px solid white;  
+  border-bottom: 1px solid white;
 }
 
-.navbar-nav > li > .dropdown-menu { 
+.navbar-nav > li > .dropdown-menu {
   background-color: #212121;
   border: 1px solid white;
 }
@@ -41,7 +41,7 @@ header {
 }
 
 .nav-link {
-  margin-right: 100px; 
+  margin-right: 100px;
 }
 
 .sidebar {
@@ -54,10 +54,29 @@ header {
 }
 
 .main {
-  padding-top: 25px;  
+  padding-top: 25px;
   min-height: calc(100vh - 75px);
   margin-top: 75px;
   padding: 25px;
   background-color: #515151;
   color: white;
+}
+
+.centered-form{
+  margin: 60px;
+  padding: 20px
+}
+
+.centered-form .panel{
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+.panel {
+  padding: 20px;
+  width: 450px
+}
+
+input {
+  margin: 2px
 }
