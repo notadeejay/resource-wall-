@@ -9,6 +9,7 @@ const router  = express.Router();
 router.post("/", function (req, res) {
 
 let newResource = {
+  user_id: req.session.user.id
   title: req.body.title
   description: req.body.description
   url: req.body.url
