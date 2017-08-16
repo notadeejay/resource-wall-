@@ -25,7 +25,7 @@ router.post("/", function (req, res) {
         console.log(results);
         console.log(newUser)
         req.session.user = results[0];
-        res.status(200).send(results[0]);
+        res.status(200).redirect('/new')
       })
 
   });
