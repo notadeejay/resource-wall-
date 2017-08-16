@@ -2,12 +2,11 @@
 
 const express = require('express');
 const router  = express.Router();
-const db = require('../lib/util/queries.js');
 
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    db.getAllResources()
+    knex.getAllResources()
   });
 
 //ADD NEW USER TO DATABASE @ REGISTRATION

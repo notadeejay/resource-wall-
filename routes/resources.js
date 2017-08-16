@@ -32,18 +32,38 @@ router.get("/resources", (req, res) => {
 
   });
 
-  //GET ALL THE RESOURCES FROM THE DATABASE
+  //GET ALL RESOURCES FOR USER
   router.get("/resources", function (req,res) {
     let user = req.session.user.id
 
     knex.getAllResourcesForUser(user, (urls) => {
-        response.render('myresources', {
+        res.render('myresources', {
           urls: urls
         });
     });
   });
 
+ //LIKE A RESOURCE
+  router.post("/:resource_id/like", function (req, res) {
+   let resourceID = req.params.resource_id
+   let userID = req.session.id
+    knex.addLikes(resourceID, userID, (likes) => {
+      res.render('resources', {likes: likes
+      });
+    })
+
+  })
+
+  //UNLIKE A RESOURCE
+  router.delete("/", (req, res) => {
+
+    knex.removeLike(req, (likes) => {
+
+    }
+  })
+
 return router
 
 }
+
 
