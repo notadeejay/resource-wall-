@@ -52,7 +52,7 @@ app.get("/resources/:user_id", (req, res) => {
   res.render("myResources");
 });
 
-app.get("/resources/new", (req, res) => {
+app.get("/new", (req, res) => {
   res.render("newResource");
 });
 
