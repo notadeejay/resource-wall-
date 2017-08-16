@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const db = require('../lib/util/queries.js');
 
 module.exports = (knex) => {
 
@@ -21,22 +22,12 @@ router.post("/", function (req, res) {
   let email = req.body.email
   let password = bcrypt.hashSync(req.body.password, 10)
 
-  let newUser = {
+  db.addNewUser({
           first_name: firstname,
           last_name: lastname,
           email: email,
           password: password
-      };
-
-  knex('users')
-        .insert(newUser)
-        .returning(['id', 'first_name'])
-        .then((res) => {
-          console.log(newUser);
-          req.session.user = res[0];
-          res.status(200).send(res[0]);
-        })
-
+      });
   });
 
 
