@@ -8,6 +8,12 @@ const router  = express.Router();
 //ADD NEW RESOURCE TO DATABASE
 router.post("/", function (req, res) {
 
+let newResource = {
+  title: req.body.title
+  description: req.body.description
+  url: req.body.url
+}
+
 });
 
 
