@@ -43,6 +43,24 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+//
+app.get("/resources", (req, res) => {
+  res.render("resources");
+});
+
+app.get("/resources/:user_id", (req, res) => {
+  res.render("myResources");
+});
+
+app.get("/resources/new", (req, res) => {
+  res.render("newResources");
+});
+
+app.get("/:user_id", (req, res) => {
+  res.render("profile");
+});
+
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
