@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const bcrypt = require('bcrypt');
 
 module.exports = (knex) => {
 
@@ -10,7 +11,8 @@ router.post("/", function (req, res) {
   let firstname = req.body.first_name
   let lastname = req.body.last_name
   let email = req.body.email
-  let password = req.body.password
+  let password = bcrypt.hashSync(req.body.password, 10);
+
   let newUser = {
           first_name: firstname,
           last_name: lastname,
@@ -22,8 +24,6 @@ router.post("/", function (req, res) {
       .insert(newUser)
       .returning(['id', 'first_name'])
       .then( (results) => {
-        console.log(results);
-        console.log(newUser)
         req.session.user = results[0];
         res.status(200).redirect('/new')
       })
