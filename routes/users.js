@@ -6,10 +6,6 @@ const db = require('../lib/util/queries.js');
 
 module.exports = (knex) => {
 
-  router.get("/", (req, res) => {
-    db.getAllResources()
-  });
-
 //ADD NEW USER TO DATABASE @ REGISTRATION
 router.post("/", function (req, res) {
   let firstname = req.body.firstname

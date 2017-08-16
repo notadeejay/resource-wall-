@@ -1,7 +1,63 @@
-body {
-  background-color: #EEE;
+* {
+  font-family: 'Open Sans', sans-serif; 
+}
 
-  h1 {
-    color: #244751;
-  }
+html {
+  background-color: #212121;
+  color: #ffffff;
+}
+
+body {
+  background-color: #212121;
+}
+
+header {
+  background-color: #212121;
+  color: white;
+}
+
+.navbar {
+  background-color: #212121;
+  margin: 0 auto;
+  min-height: 75px;
+  border-bottom: 1px solid white;  
+}
+
+.navbar-nav > li > .dropdown-menu { 
+  background-color: #212121;
+  border: 1px solid white;
+}
+
+.navbar-nav > li > .dropdown-menu > a {
+  color: white;
+}
+
+.navbar-nav > li > .dropdown-menu > a:hover {
+  color: #212121;
+}
+
+.navbar-brand {
+  margin-left: 100px;
+}
+
+.nav-link {
+  margin-right: 100px; 
+}
+
+.sidebar {
+  padding-top: 25px;
+  text-align: center;
+  padding: 25px;
+  margin-top: 75px;
+  background-color: #212121;
+  color: white;
+}
+
+.main {
+  padding-top: 25px;  
+  min-height: calc(100vh - 75px);
+  margin-top: 75px;
+  padding: 25px;
+  background-color: #515151;
+  color: white;
 }

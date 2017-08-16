@@ -1,0 +1,33 @@
+article {
+    width: 400px;
+    text-align: center;
+    transition: all 0.5s;
+    margin: 15px;
+}
+
+article:hover {
+    box-shadow: 4px 4px 10px #171717;
+    transform: scale(1.02);
+}
+
+article .articleHeader {
+    padding: 10px;
+    background-color: #0086c3;
+    min-height: 50px;
+}
+
+article .articleHeader h5 {
+    padding-top: 10px;
+}
+
+article .articleBody {
+    padding: 10px;
+    background-color: #29b6f6;
+    min-height: 150px;
+}
+
+article .articleFooter {
+    padding: 10px;
+    background-color: #29b6f6;
+    min-height: 40px;
+}
