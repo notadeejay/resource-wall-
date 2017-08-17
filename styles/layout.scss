@@ -73,6 +73,8 @@ body .mainContainer .container {
   height: 100%;
 }
 
+
+
 .main {
   padding-top: 25px;
   min-height: calc(100vh - 75px);
@@ -85,8 +87,23 @@ body .mainContainer .container {
   right: 0px;
 }
 
+.sidebar h3 {
+  margin-top: 25px;
+}
+
+.tags {
+  margin-top: 50px;
+  border-top: 1px solid gray;
+  padding-top: 30px;
+}
+
+.tags h5 {
+  margin-top: 20px;
+}
+
 .main h1 {
   margin-bottom: 25px;
+  text-align: center;
 }
 
 .main .row {
@@ -102,9 +119,6 @@ body .mainContainer .container {
   transform: scale(1.02);
 }
 
-.grid {
-
-}
 
 .grid-item {
   float: left;
