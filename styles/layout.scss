@@ -74,7 +74,6 @@ body .mainContainer .container {
 }
 
 .main {
-  text-align: center;
   padding-top: 25px;
   min-height: calc(100vh - 75px);
   margin-top: 75px;
@@ -88,4 +87,34 @@ body .mainContainer .container {
 
 .main h1 {
   margin-bottom: 25px;
+}
+
+.main .row {
+  margin-bottom: 50px;
+}
+
+.main img {
+  transition: all 0.5s;  
+}
+
+.main img:hover {
+  box-shadow: 4px 4px 10px #171717;
+  transform: scale(1.02);
+}
+
+.grid {
+
+}
+
+.grid-item {
+  float: left;
+  background: #e6e5e4;
+  border: 2px solid #b6b5b4;
+}
+
+.grid-item--width2 { 
+  width: 450px; 
+}
+.grid-item--height2 {
+   height: 450px; 
 }

@@ -10,6 +10,7 @@ $(() => {
           window.location.href = "/resources"
   });
 });
+<<<<<<< HEAD
 
 var target = "https://www.google.com";
 var key    = "123456";
@@ -22,4 +23,14 @@ $.ajax({
         console.log(response);
     }
 });
+=======
+  $('.grid').isotope({
+    layoutMode: 'cellsByRow',
+    itemSelector: '.grid-item',
+    cellsByRow: {
+      columnWidth: 520,
+      rowHeight: 520
+    }
+  });
+>>>>>>> master
 });
