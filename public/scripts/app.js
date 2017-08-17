@@ -92,9 +92,10 @@ $('.grid').isotope({
  const renderResources = (data) => {
   $('#grid').html('');
     let html = data
+              .sort((a,b) => b.id - a.id)
               .map(generateHTML)
               .join('')
-
+console.log(data)
     $('#grid').html(html)
   }
 
@@ -108,6 +109,8 @@ $('.grid').isotope({
         dataType: "jsonp",
         data: {q: target, key: key},
       }).then((result) => {
+        result.id = r.id
+        result.user_id = r.user_id
         array.push(result)
         renderResources(array)
     });
