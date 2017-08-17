@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/article.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/profile.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -20,19 +21,27 @@
     </header>
     <div class='mainContainer'>
       <div class="sidebar">
-      Bless up. To be successful you’ve got to work hard, to make history, simple, you’ve got to make it. You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean.
-      You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up. It’s important to use cocoa butter. It’s the key to more success, why not live smooth? Why live rough? Life is what you make it, so let’s make it. Special cloth alert. You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up. To succeed you must believe. When you believe, you will succeed. Congratulations, you played yourself.
+        <h3>add new +</h3>
+            <div class='tags'>
+                <h5>catagory</h5>
+                <h5>catagory</h5>
+                <h5>catagory</h5>
+                <h5>catagory</h5>
+                <h5>catagory</h5>
+                <h5>catagory</h5>
+            </div>
       </div>
       <div class="main">
         <div class="innerContent">
-          <div class="col-lg-12">
-            <form action="/user/:id" method="PUT">
-              <input id="first_name" type="text" name="first_name" placeholder="dude's firstname">
-              <input id="last_name" type="text" name="last_name" placeholder="dude's lastname">
-              <input id="email" type="text" name="email" placeholder="dude's email">
-              <input id="new_password" type="password" name="new_password">
-              <input id="confirm_password" type="password" name="confirm_password">
-              <input type="submit" value="Update">
+          <div class='container'>
+          <h1>Edit profile!</h1>
+            <form role='form' id="edit">
+                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+                <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                <input type="submit" id='editSubmit' value="confirm" class="btn btn-info btn-block">
             </form>
           </div>
         </div>
