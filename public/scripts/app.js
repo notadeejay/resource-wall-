@@ -11,5 +11,15 @@ $(() => {
   });
 });
 
+var target = "https://www.google.com";
+var key    = "123456";
 
+$.ajax({
+    url: "https://api.linkpreview.net",
+    dataType: "jsonp",
+    data: {q: target, key: key},
+    success: function (response) {
+        console.log(response);
+    }
+});
 });
