@@ -37,7 +37,7 @@ $('.grid').isotope({
     cellsByRow: {
       columnWidth: 390,
       rowHeight: 390
-    }
+    },
   });
 
 
