@@ -6,6 +6,7 @@ const generateHTML = (obj) => {
                     <h5>${obj.title}</h5>
                 </div>
                 <div class = 'articleBody'>
+                  <img src="${obj.image}">
                   <p class = "description"> ${obj.description}</p>
                 </div>
                 <div class = 'articleFooter'>
@@ -67,8 +68,7 @@ $.ajax({
     method: "GET",
     url: "/api/resources/resources"
   }).done((resources) => {
-
-     renderResources(resources)
+     generatePreview(resources)
 
   });;
 }
@@ -92,11 +92,28 @@ $('.grid').isotope({
  const renderResources = (data) => {
   $('#grid').html('');
     let html = data
-              .sort((a,b) => b.id - a.id)
               .map(generateHTML)
               .join('')
+
     $('#grid').html(html)
   }
+
+  const generatePreview = (obj) => {
+    let key = '599620a6888eff2fedf501c8f8271e520e3301cc25605'
+    let array = [];
+     obj.forEach((r) => {
+      let target = r.url
+    $.ajax({
+        url: "https://api.linkpreview.net",
+        dataType: "jsonp",
+        data: {q: target, key: key},
+      }).then((result) => {
+        array.push(result)
+        renderResources(array)
+    });
+  });
+}
+
 
 loadResources();
 
