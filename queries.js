@@ -17,7 +17,7 @@ module.exports = {
         res.status(200).send()
       })
 
-  }
+  },
 
   addNewUser: (user) => {
     knex('users')
@@ -42,11 +42,11 @@ module.exports = {
 
   updateProfile: (user, req, done) => {
     knex("users")
-    .where({'id', user})
+    .where('id', user)
     .update({
       firstname: req.body.firstname,
       lastname: req.body.last.name,
-      email: req.body.email
+      email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 10)
     })
     .then( (result) => {
