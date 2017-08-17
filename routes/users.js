@@ -30,6 +30,33 @@ router.post("/", function (req, res) {
 
   });
 
+router.post("/login", function (req, res) {
+ const emailReq = req.body.email
+ const passwordReq = req.body.password
+
+
+   knex('users')
+  .select('password')
+  .where({'email' : emailReq})
+  .then(function(result) {
+    if (!result || !result[0])  {  // NOT FOUND!
+      return;
+    }
+
+    var pass = result[0].password;
+    if (passwordReq === pass) {
+     req.session.user = result[0]
+     res.status(200).redirect("/resources")
+     console.log('Success')
+    } else {
+      console.log('Failed login')
+    }
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+})
+
   return router;
 }
 

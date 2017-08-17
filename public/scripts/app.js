@@ -1,10 +1,15 @@
 $(() => {
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
-  });;
+  $("#loginform").on("submit", function(event) {
+    let data = $(this).serialize()
+    event.preventDefault();
+    $.ajax({
+        url: "/api/users/login",
+        method: "POST",
+        data: data,
+         }).then(function (result) {
+          window.location.href = "/resources"
+  });
+});
+
+
 });
