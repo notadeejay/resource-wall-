@@ -57,6 +57,12 @@ router.post("/login", function (req, res) {
   });
 })
 
+ router.post("/logout", (req, res) => {
+    req.session.destroy();
+    res.status(201).redirect("/");
+  });
+
+
   return router;
 }
 
