@@ -61,6 +61,7 @@ $(".logoutbutton").on("click", function (event) {
   });
 });
 
+
 const loadResources = () => {
 $.ajax({
     method: "GET",
@@ -71,6 +72,7 @@ $.ajax({
 
   });;
 }
+
 
 $('.grid').isotope({
     layoutMode: 'cellsByRow',
@@ -86,6 +88,7 @@ $('.grid').isotope({
     $('#searchBar').animate({width: 'toggle'});
   })
 
+
  const renderResources = (data) => {
   $('#grid').html('');
     let html = data
@@ -96,6 +99,5 @@ $('.grid').isotope({
   }
 
 loadResources();
-
 
 });

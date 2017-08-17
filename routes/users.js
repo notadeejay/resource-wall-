@@ -2,54 +2,66 @@
 
 const express = require('express');
 const router  = express.Router();
+const bcrypt = require('bcrypt');
 
 module.exports = (knex) => {
 
-  router.get("/", (req, res) => {
-    knex.getAllResources()
-  });
-
 //ADD NEW USER TO DATABASE @ REGISTRATION
-router.post("/", function (req, res) {
-  let firstname = req.body.firstname
-  let lastname = req.body.last.name
+router.post("/register", function (req, res) {
+  let firstname = req.body.first_name
+  let lastname = req.body.last_name
   let email = req.body.email
-  let password = bcrypt.hashSync(req.body.password, 10)
+  let password = bcrypt.hashSync(req.body.password, 10);
 
-  knex.addNewUser({
+  let newUser = {
           first_name: firstname,
           last_name: lastname,
           email: email,
           password: password
-      }, () => {
-      res.redirect('/resources');
+      }
+
+       knex('users')
+      .insert(newUser)
+      .returning(['id', 'first_name'])
+      .then((result) => {
+        req.session.user = result[0];
+        res.status(200).redirect('/new')
+      })
+
   });
 
+router.post("/login", function (req, res) {
+  const emailReq = req.body.email
+  const passwordReq = req.body.password
 
 
-//LOGIN USER THAT IS ALREADY CREATED
-// router.post("/login", function (req,res){
-//   let email = req.body.email
-//   let password = req.body.password
+   knex('users')
+  .select('password', 'id')
+  .where({'email' : emailReq})
+  .then(function(result) {
+    if (!result || !result[0])  {  // NOT FOUND!
+      return;
+    }
 
-// });
+    var pass = result[0].password;
+    if (passwordReq === pass) {
+     req.session.user = result[0].id
+     res.status(200).redirect("/resources")
+     console.log('Success')
+    } else {
+      console.log('Failed login')
+    }
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+})
 
-//LOGOUT & CLEAR COOKIE
-// router.post("/logout", (req, res) => {
-// //LOGOUT & REDIRECT
-//   req.session = null;
-//   res.status(201).send();
-// });
+ router.post("/logout", (req, res) => {
+    req.session.destroy();
+    res.status(201).redirect("/");
+  });
 
-//UPDATE USER PROFILE
-
-router.post('/:id', (req, res) => {
- let user = req.params.id
-
- knex.updateProfile(user, req, () => {
-      response.redirect('/myresources');
-    });
-});
 
   return router;
 }

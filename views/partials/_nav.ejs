@@ -1,0 +1,53 @@
+<!-- logged in -->
+
+<% if (user) { %>
+<nav class="navbar navbar-dark navbar-expand-md bg-faded justify-content-center">
+    <a href="/" class="navbar-brand d-flex w-50 mr-auto"><img class='logo' src='/vendor/logo.png'></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="collapsingNavbar3">
+        <ul class="navbar-nav mx-auto w-100 justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" id='searchButton' href="#">search</a>
+            </li>
+            <li>
+                <input type='text' id='searchBar'>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Hello USER</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item logoutbutton" href="#">Log Out</a>
+            </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<% }else{ %>
+
+<!-- not logged in  -->
+
+<nav class="navbar navbar-dark navbar-expand-md bg-faded justify-content-center">
+    <a href="/" class="navbar-brand d-flex w-50 mr-auto"><img class='logo' src='/vendor/logo.png'><p class='logoText'>wallit</p></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="collapsingNavbar3">
+        <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+            <form role='form' id="loginform">
+                <input type='email' id="email" name='email' placeholder='email'>
+                <input type='password' id="password" name='password' placeholder='password'>
+                <input type='submit' id="submit" value='login' class='btn btn-info'>
+            </form>
+        </ul>
+    </div>
+</nav>
+
+<%}%>
+
