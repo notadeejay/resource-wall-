@@ -61,7 +61,7 @@ app.get("/new", (req, res) => {
   res.render("newResource");
 });
 
-app.get("/:user_id", (req, res) => {
+app.get("/user:id", (req, res) => {
   let user_id = req.session.user.id;
   res.render("profile");
 });
