@@ -18,4 +18,9 @@ $(() => {
       rowHeight: 520
     }
   });
+
+  $('#searchButton').click(function() {
+    $('#searchBar').animate({width: 'toggle'});
+  })
+
 });

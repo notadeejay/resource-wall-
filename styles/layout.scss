@@ -53,12 +53,16 @@ body .mainContainer .container {
   margin-left: 100px;
 }
 
-.nav-link {
-  margin-right: 100px;
+.dropdown-toggle {
+  margin-right: 100px;  
 }
 
 .navbar form {
   margin-right: 100px;
+}
+
+.navbar #searchBar {
+  margin-top: 5px;
 }
 
 .sidebar {
@@ -73,7 +77,18 @@ body .mainContainer .container {
   height: 100%;
 }
 
+#searchBar {
+  background: none;
+  border: none;
+  border-bottom: 2px solid white;
+  display: none;
+  width: 300px;
+  color: white;
+}
 
+#searchBar:focus {
+  outline-width: 0;
+}
 
 .main {
   padding-top: 25px;
