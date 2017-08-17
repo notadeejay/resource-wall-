@@ -140,33 +140,31 @@ body .mainContainer .container {
 
 @media (max-width: 1909px) {
   .grid {
-    width: 1200px;
+    max-width: 1170px;
   }
 }
 
 @media (max-width: 1519px) {
   .grid {
-    width: 800px;
+    max-width: 780px;
   }
 }
 
 @media (max-width: 1129px) {
   .grid {
-    width: 400px;
+    max-width: 390px;
   }
 }
 
 .grid-item {
   float: left;
-  background: #e6e5e4;
-  border: 2px solid #b6b5b4;
 }
 
 .grid-item--width2 { 
-  width: 450px; 
+  width: 350px; 
 }
 .grid-item--height2 {
-   height: 450px; 
+   height: 350px; 
 }
 
 .logo {

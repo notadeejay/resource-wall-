@@ -78,8 +78,8 @@ $('.grid').isotope({
     layoutMode: 'cellsByRow',
     itemSelector: '.grid-item',
     cellsByRow: {
-      columnWidth: 390,
-      rowHeight: 390
+      columnWidth: 400,
+      rowHeight: 400
     }
   });
 
