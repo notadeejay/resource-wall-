@@ -35,8 +35,8 @@ $('.grid').isotope({
     layoutMode: 'cellsByRow',
     itemSelector: '.grid-item',
     cellsByRow: {
-      columnWidth: 520,
-      rowHeight: 520
+      columnWidth: 390,
+      rowHeight: 390
     }
   });
 
