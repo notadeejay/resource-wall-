@@ -10,6 +10,12 @@ $(() => {
           window.location.href = "/resources"
   });
 });
-
-
+  $('.grid').isotope({
+    layoutMode: 'cellsByRow',
+    itemSelector: '.grid-item',
+    cellsByRow: {
+      columnWidth: 520,
+      rowHeight: 520
+    }
+  });
 });
