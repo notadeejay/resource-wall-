@@ -71,15 +71,17 @@ module.exports = {
 },
 
  removeLikes: (resourceID, userID) => {
-       knex('likes')
+  knex.('likes')
       .where({'user_id': userID, 'resource_id': resourceID})
       .del()
-      .then((result) => {
+      .then( (result) => {
+
         res.status(200).send();
       })
       .catch((err) => {
         throw err;
-    })
+
+      })
 
 },
 

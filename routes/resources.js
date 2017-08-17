@@ -12,10 +12,10 @@ module.exports = (knex) => {
       title: req.body.title,
       description: req.body.description,
       url: req.body.url,
-      user_id: req.session.id
+      user_id: req.session.user.id
     }
 
-     knex('resources')
+      knex('resources')
       .insert(newResource)
       .then( (results) => {
         res.status(200).send()
