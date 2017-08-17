@@ -134,6 +134,29 @@ body .mainContainer .container {
   transform: scale(1.02);
 }
 
+.grid {
+  margin: 0 auto;
+}
+
+// media qiery grid
+
+@media (max-width: 1909px) {
+  .grid {
+    width: 1200px;
+  }
+}
+
+@media (max-width: 1519px) {
+  .grid {
+    width: 800px;
+  }
+}
+
+@media (max-width: 1129px) {
+  .grid {
+    width: 400px;
+  }
+}
 
 .grid-item {
   float: left;
@@ -146,8 +169,4 @@ body .mainContainer .container {
 }
 .grid-item--height2 {
    height: 450px; 
-}
-
-.grid {
-  margin: 0 auto !important;
 }
