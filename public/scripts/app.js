@@ -30,6 +30,17 @@ $("#registrationform").on("submit", function (event) {
   });
 });
 
+//LOGOUT HANDLER
+$(".logoutbutton").on("click", function (event) {
+  event.preventDefault();
+  $.ajax ({
+    url: "/api/users/logout",
+    method: "POST"
+  }).then(function (result) {
+    window.location.href = "/"
+  });
+});
+
 
 $('.grid').isotope({
     layoutMode: 'cellsByRow',
