@@ -73,7 +73,7 @@ app.get("/new", (req, res) => {
   res.render("newResource", templateVars);
 });
 
-app.get("/user:id", (req, res) => {
+app.get("/profile", (req, res) => {
   let templateVars = {
     user: req.session.user
   }
