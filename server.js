@@ -45,25 +45,40 @@ app.use("/api/resources", resourceRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  let templateVars = {
+    user: req.session.user
+  }
+  res.render("index", templateVars);
 });
 
 //
 app.get("/resources", (req, res) => {
-  res.render("resources");
+  let templateVars = {
+    user: req.session.user
+  }
+  res.render("resources", templateVars);
 });
 
 app.get("/resources/:user_id", (req, res) => {
-  res.render("myResources");
+  let templateVars = {
+    user: req.session.user
+  }
+  res.render("myResources", templateVars);
 });
 
 app.get("/new", (req, res) => {
-  res.render("newResource");
+  let templateVars = {
+    user: req.session.user
+  }
+  res.render("newResource", templateVars);
 });
 
 app.get("/user:id", (req, res) => {
-  let user_id = req.session.user.id;
-  res.render("profile");
+  let templateVars = {
+    user: req.session.user
+  }
+
+  res.render("profile", templateVars);
 });
 
 

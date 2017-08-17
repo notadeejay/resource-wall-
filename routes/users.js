@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 module.exports = (knex) => {
 
 //ADD NEW USER TO DATABASE @ REGISTRATION
-router.post("/", function (req, res) {
+router.post("/register", function (req, res) {
   let firstname = req.body.first_name
   let lastname = req.body.last_name
   let email = req.body.email
