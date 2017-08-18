@@ -41,7 +41,7 @@ router.post("/login", function (req, res) {
     if (!result || !result[0])  {  // NOT FOUND!
       return;
     }
-    console.log(result[0].id)
+
     var pass = result[0].password;
     if (passwordReq == pass) {
      req.session.user = result[0].id

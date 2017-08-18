@@ -32,19 +32,6 @@ const generateInfo = (obj) => {
 
 $(() => {
 
-//REGISTRATION HANDLER
-$("#registrationform").on("submit", function (event) {
-    let $this = $(this)
-    let data = $(this).serialize()
-    event.preventDefault();
-    $.ajax({
-        url: "/api/users/register",
-        method: "POST",
-        data: data,
-         }).then(function (result) {
-          window.location.href = "/resources"
-
-
   //REGISTRATION HANDLER
   $("#registrationform").on("submit", function (event) {
       let $this = $(this)
@@ -139,8 +126,13 @@ $('.grid').isotope({
 
   const renderInfo = (data) => {
 
-  // move render info in here from below   
+  // move render info in here from below
 
+    let html = data
+              .sort((a,b) => b.id - a.id)
+              .map(generateHTML)
+              .join('')
+    $('#grid').html(html)
   }
 
 
@@ -181,9 +173,24 @@ $(".myresources").click(function() {
 
           renderResources(resources)
 
+          });
+});
+
+
+$(".category").click(function() {
+    event.preventDefault();
+    const catid = $(this).data('category')
+        $.ajax({
+        url: `/api/resources/${catid}`,
+        method: "GET",
+         }).then(function (resources) {
+           renderResources(resources)
+
+       });
   });
 
-})
+
+
 
 loadResources();
 
