@@ -5,10 +5,10 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-router.post('/:resource_id/likes', function (req, res) {
+router.post('/:resid', function (req, res) {
        let liked = {
-        user_id: req.session.user
-        resource_id: req.params.resource_id
+        user_id: req.session.user,
+        resource_id: req.params.resid
        }
 
        knex ('likes')
@@ -17,7 +17,19 @@ router.post('/:resource_id/likes', function (req, res) {
         res.json(results);
 
     });
+});
 
+router.delete('/:resid', function (req, res) {
+
+       knex ('likes')
+      .where('user_id', req.session.user)
+      .andWhere('resource_id', req.params.resid)
+      .del()
+      .then((results) => {
+        res.status(204).end()
+      })
+
+    });
 
 return router
 

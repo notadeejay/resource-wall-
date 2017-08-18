@@ -8,8 +8,11 @@ const generateHTML = (obj) => {
                 <div class = 'articleBody'>
                   <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
                 </div>
-                <div class = 'articleFooter'>
-                   <a href='#'><i class="material-icons">add_circle</i></a>
+                <div class = 'articleFooter clearfix'>
+
+                   <a href='#' class='favourite' data-resid='${obj.id}'><i class="like material-icons">favorite</i></a>
+                  <span class = "test"> </span>
+                   <a href='#'><span><i class="add material-icons">add_circle</i></span></a>
                 </footer>
             </article>
         </div>`
@@ -136,7 +139,7 @@ $('.grid').isotope({
   }
 
 
-$('#grid').on('click', '.articleFooter i', function(e) {
+$('#grid').on('click', '.articleFooter span i', function(e) {
   e.preventDefault();
   $.colorbox({
     html: "<div id='editCard'><h4>edit your card</h4><br /><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><button id='exit'>exit</button></div>",     // generateInfo(obj)
@@ -189,6 +192,32 @@ $(".category").click(function() {
        });
   });
 
+
+$(document).on ('click', '.favourite', function(event) {
+    event.preventDefault();
+    const resid = $(this).data('resid')
+    const $this = $(this)
+    const classCheck = $this.children('.like').hasClass('liked')
+
+
+
+    if (!classCheck) {
+        $.ajax({
+        url: `/api/likes/${resid}`,
+        method: "POST",
+         }).then(function (resources) {
+          $this.children('.like').toggleClass('liked')
+       });
+    } else {
+        $.ajax({
+          url: `/api/likes/${resid}`,
+          method: 'DELETE'
+        }).then(function (response) {
+          $this.children('.like').toggleClass('liked')
+      });
+    }
+
+  });
 
 
 
