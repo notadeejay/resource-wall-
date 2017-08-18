@@ -9,7 +9,7 @@ const generateHTML = (obj) => {
                   <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
                 </div>
                 <div class = 'articleFooter clearfix'>
-                   <a href='#'><i class="like material-icons">favorite</i></a>
+                   <a href='#' class='favourite' data-resID='${obj.id}'><i class="like material-icons">favorite</i></a>
                    <a href='#'><span><i class="add material-icons">add_circle</i></span></a>
                 </footer>
             </article>
@@ -190,6 +190,18 @@ $(".category").click(function() {
        });
   });
 
+
+$(".favourite").click(function() {
+    event.preventDefault();
+    const resID = $(this).data('resID')
+        $.ajax({
+        url: `/api/resources/${resID}/like`,
+        method: "POST",
+         }).then(function (resources) {
+           renderResources(resources)
+
+       });
+  });
 
 
 

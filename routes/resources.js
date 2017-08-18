@@ -84,14 +84,6 @@ router.get("/myresources", function (req, res) {
 
 router.get("/:catid", function (req, res) {
    let catid = req.params.catid
-// select *
-//     from resources
-//         join resource_categories
-//             on resources.id = resource_id
-//         join categories
-//             on resource_categories.category_id = categories.id
-// where category_id = 900
-
 
     knex.select("*")
       .from("resources")
@@ -103,7 +95,6 @@ router.get("/:catid", function (req, res) {
         console.log(results)
     });
  });
-
 
 return router
 
