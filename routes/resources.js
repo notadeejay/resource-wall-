@@ -32,6 +32,21 @@ router.get("/resources", function (req, res) {
     });
  });
 
+router.get("/search", function (req, res) {
+   let input = req.query.userinput
+
+    knex.select("*")
+      .from("resources")
+      .where('title', 'like', '%'+ input+ '%')
+      .orWhere('description', 'like', '%'+ input+ '%')
+      .orWhere('url', 'like', '%'+ input+ '%')
+      .then((results) => {
+        res.json(results);
+        console.log(results)
+    });
+ });
+
+
 
 return router
 

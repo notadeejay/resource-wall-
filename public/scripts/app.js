@@ -68,10 +68,25 @@ $.ajax({
     method: "GET",
     url: "/api/resources/resources"
   }).done((resources) => {
-     generatePreview(resources)
+     // generatePreview(resources)
+     renderResources(resources)
 
   });;
 }
+
+
+$("#search").on("submit", function(event) {
+    let data = $(this).serialize();
+    event.preventDefault();
+    $.ajax({
+        url: "/api/resources/search",
+        method: "GET",
+        data: data,
+         }).then(function (resources) {
+          renderResources(resources)
+  });
+});
+
 
 
 $('.grid').isotope({
@@ -99,23 +114,23 @@ console.log(data)
     $('#grid').html(html)
   }
 
-  const generatePreview = (obj) => {
-    let key = '599620a6888eff2fedf501c8f8271e520e3301cc25605'
-    let array = [];
-     obj.forEach((r) => {
-      let target = r.url
-    $.ajax({
-        url: "https://api.linkpreview.net",
-        dataType: "jsonp",
-        data: {q: target, key: key},
-      }).then((result) => {
-        result.id = r.id
-        result.user_id = r.user_id
-        array.push(result)
-        renderResources(array)
-    });
-  });
-}
+//   const generatePreview = (obj) => {
+//     let key = '599620a6888eff2fedf501c8f8271e520e3301cc25605'
+//     let array = [];
+//      obj.forEach((r) => {
+//       let target = r.url
+//     $.ajax({
+//         url: "https://api.linkpreview.net",
+//         dataType: "jsonp",
+//         data: {q: target, key: key},
+//       }).then((result) => {
+//         result.id = r.id
+//         result.user_id = r.user_id
+//         array.push(result)
+//         renderResources(array)
+//     });
+//   });
+// }
 
 
 loadResources();

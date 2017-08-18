@@ -53,34 +53,48 @@ app.get("/", (req, res) => {
 
 //
 app.get("/resources", (req, res) => {
+  if (req.session.user) {
   let templateVars = {
     user: req.session.user
   }
   res.render("resources", templateVars);
+} else {
+  res.status(401).redirect("/");
+}
 });
 
 app.get("/resources/:user_id", (req, res) => {
+  if (req.session.user) {
   let templateVars = {
     user: req.session.user
   }
   res.render("myResources", templateVars);
+}else {
+  res.status(401).redirect("/");
+}
 });
 
 app.get("/new", (req, res) => {
+  if (req.session.user) {
   let templateVars = {
     user: req.session.user
   }
   res.render("newResource", templateVars);
+}else {
+  res.status(401).redirect("/");
+}
 });
 
 app.get("/profile", (req, res) => {
-  let templateVars = {
-    user: req.session.user
-  }
-
-  res.render("profile", templateVars);
+  if (req.session.user) {
+    let templateVars = {
+      user: req.session.user
+    }
+    res.render("profile", templateVars);
+  } else {
+  res.status(401).redirect("/");
+}
 });
-
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
