@@ -13,27 +13,41 @@ const generateHTML = (obj) => {
                 </footer>
             </article>
         </div>`
-  return html
+  return html;
 }
+
+const generateInfo = (obj) => {
+  const html = `
+            <dialog id='editCard'>
+              <h4>edit your cars</h4>
+              <p>sample stuff</p>
+              <p>sample stuff</p>
+              <p>sample stuff</p>
+              <p>sample stuff</p>
+              <p>sample stuff</p>
+              <button id='exit'>exit</button>
+            </dialog>`;
+  return html;
+}
+
 
 $(() => {
 
-//REGISTRATION HANDLER
-$("#registrationform").on("submit", function (event) {
-    let $this = $(this)
-    let data = $(this).serialize()
-    event.preventDefault();
-    $.ajax({
-        url: "/api/users/register",
-        method: "POST",
-        data: data,
-         }).then(function (result) {
-          window.location.href = "/new"
+  //REGISTRATION HANDLER
+  $("#registrationform").on("submit", function (event) {
+      let $this = $(this)
+      let data = $(this).serialize()
+      event.preventDefault();
+      $.ajax({
+          url: "/api/users/register",
+          method: "POST",
+          data: data,
+      }).then(function (result) {
+        window.location.href = "/new"
+      });
+  });
 
-        });
-});
-
-//LOGIN HANDLER
+  //LOGIN HANDLER
   $("#loginform").on("submit", function(event) {
     let data = $(this).serialize()
     let $this = $(this)
@@ -42,22 +56,21 @@ $("#registrationform").on("submit", function (event) {
         url: "/api/users/login",
         method: "POST",
         data: data,
-         }).then(function (result) {
-
-          window.location.href = "/resources"
+    }).then(function (result) {
+      window.location.href = "/resources"
+    });
   });
-});
 
 //LOGOUT HANDLER
-$(".logoutbutton").on("click", function (event) {
-  event.preventDefault();
-  $.ajax ({
-    url: "/api/users/logout",
-    method: "POST"
-  }).then(function (result) {
-    window.location.href = "/"
+  $(".logoutbutton").on("click", function (event) {
+    event.preventDefault();
+    $.ajax ({
+      url: "/api/users/logout",
+      method: "POST"
+    }).then(function (result) {
+      window.location.href = "/"
+    });
   });
-});
 
 
 const loadResources = () => {
@@ -68,7 +81,7 @@ $.ajax({
      // generatePreview(resources)
      renderResources(resources)
 
-  });;
+  });
 }
 
 //SEARCH BAR
@@ -96,7 +109,6 @@ $('.grid').isotope({
     }
   });
 
-
   $('#searchButton').click(function() {
     $('#search').animate({width: 'toggle'});
   })
@@ -104,13 +116,21 @@ $('.grid').isotope({
 //RENDER RESOURCES
  const renderResources = (data) => {
   $('#grid').html('');
-    let html = data
-              .sort((a,b) => b.id - a.id)
-              .map(generateHTML)
-              .join('')
-console.log(data)
-    $('#grid').html(html)
-  }
+  let html = data
+            .sort((a,b) => b.id - a.id)
+            .map(generateHTML)
+            .join('')
+  console.log(data)
+  $('#grid').html(html)
+}
+
+$('#grid').on('click', '.articleFooter i', function(e) {
+  e.preventDefault();
+  $.colorbox({
+    html: "<h3>pass data to me!!</h3>",  // pass data with 'generateInfo(obj)'
+    width: 500
+  });
+});
 
 //   const generatePreview = (obj) => {
 //     let key = '599620a6888eff2fedf501c8f8271e520e3301cc25605'
