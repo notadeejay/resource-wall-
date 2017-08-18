@@ -7,18 +7,22 @@ module.exports = (knex) => {
 
 
   router.post("/", function (req, res) {
+  console.log(req.body)
 
     let newResource = {
       title: req.body.title,
       description: req.body.description,
       url: req.body.url,
-      user_id: req.session.user.id
+      user_id: req.session.user
     }
        knex('resources')
       .insert(newResource)
       .then( (results) => {
        res.status(200).redirect('/resources')
       });
+
+
+
 
   });
 

@@ -29,7 +29,7 @@ $("#registrationform").on("submit", function (event) {
         method: "POST",
         data: data,
          }).then(function (result) {
-          window.location.href = "/new"
+          window.location.href = "/resources"
 
         });
 });
@@ -125,6 +125,7 @@ console.log(data)
 //       }).then((result) => {
 //         result.id = r.id
 //         result.user_id = r.user_id
+//         result.id = r.id
 //         array.push(result)
 //         renderResources(array)
 //     });
