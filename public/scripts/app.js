@@ -17,8 +17,6 @@ const generateHTML = (obj) => {
   return html
 }
 
-
-
 $(() => {
 
 //REGISTRATION HANDLER
