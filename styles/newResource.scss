@@ -1,9 +1,8 @@
 .innerContent {
-    padding: 25px;
-    background-color: gray;
-    height: 500px;
+    padding: 50px;
+    background-color: #212121;
     margin-top: 50px !important;
-    max-width: 960px;
+    max-width: 550px;
     margin: auto;
     text-align: center;
 }
@@ -13,7 +12,7 @@ h2 {
 }
 
 .innerContent form {
-    margin-top: 50px;
+    margin-top: 25px;
 }
 
 .innerContent input {
@@ -21,4 +20,58 @@ h2 {
     display: block;
     margin: 0 auto;
     margin-bottom: 3px;
+}
+
+.addNew {
+    background-color: #212121;
+    margin: 0 auto;
+    width: 600px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.newHeader {
+    height: 90px;
+    background: linear-gradient(to right,#8777DB,#6898F8);    
+}
+
+.newBody {
+    padding: 25px;
+    
+}
+
+.newBody span input {
+    font-size: 120%;
+    padding-top: 25px;
+    margin: 0 auto;
+    width: 350px;
+    display: block;
+}
+
+.newBody input {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.newFooter {
+    padding: 25px;
+    height: 100px;
+}
+
+.submitNewCard {
+    background: linear-gradient(to right,#8777DB,#6898F8);
+    width: 75px;
+    height: 30px;
+    line-height: 7px;
+    font-size: 15px !important;
+    padding-bottom: 7px !important;
+    color: white;
+}
+
+.submitNewCard:hover {
+    background: linear-gradient(to right, #6898F8,#8777DB);
+}
+
+.radioButtons {
+    margin-right: 20px;
 }
