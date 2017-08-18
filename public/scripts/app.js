@@ -6,7 +6,9 @@ const generateHTML = (obj) => {
                     <h5>${obj.title}</h5>
                 </div>
                 <div class = 'articleBody'>
-                  <p class = "description"> ${obj.description}</p>
+                  <p class = "description">
+                    <img src='http://geodavephotography.com/images/picture/36834139-picture.jpg'>
+                  </p>
                 </div>
                 <div class = 'articleFooter'>
                    <p class = 'url'>${obj.url}</p>
@@ -15,8 +17,6 @@ const generateHTML = (obj) => {
         </div>`
   return html
 }
-
-
 
 $(() => {
 

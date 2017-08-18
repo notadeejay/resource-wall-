@@ -129,10 +129,6 @@ body .mainContainer .container {
   transition: all 0.5s;  
 }
 
-.main img:hover {
-  box-shadow: 4px 4px 10px #171717;
-  transform: scale(1.02);
-}
 
 .grid {
   margin: 0 auto;
@@ -177,4 +173,8 @@ body .mainContainer .container {
   position: absolute;
   top: 15px;
   left: 145px;
+}
+
+.wallitColor {
+  color: mediumslateblue;
 }
