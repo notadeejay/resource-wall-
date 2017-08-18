@@ -46,6 +46,16 @@ router.get("/search", function (req, res) {
     });
  });
 
+router.get("/myresources", function (req, res) {
+
+    knex.select("*")
+      .from("resources")
+      .where('user_id', req.session.user)
+      .then((results) => {
+        res.json(results);
+    });
+
+ });
 
 
 return router

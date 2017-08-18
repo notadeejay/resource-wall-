@@ -63,7 +63,7 @@ app.get("/resources", (req, res) => {
 }
 });
 
-app.get("/resources/:user_id", (req, res) => {
+app.get("/myresources", (req, res) => {
   if (req.session.user) {
   let templateVars = {
     user: req.session.user

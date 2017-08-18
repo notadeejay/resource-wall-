@@ -132,6 +132,18 @@ console.log(data)
 //   });
 // }
 
+$(".myresources").click(function() {
+  event.preventDefault();
+    $.ajax({
+        url: "/api/resources/myresources",
+        method: "GET",
+         }).then(function (resources) {
+
+          renderResources(resources)
+
+  });
+
+})
 
 loadResources();
 
