@@ -30,6 +30,17 @@ const generateInfo = (obj) => {
   return html;
 }
 
+//REGISTRATION HANDLER
+$("#registrationform").on("submit", function (event) {
+    let $this = $(this)
+    let data = $(this).serialize()
+    event.preventDefault();
+    $.ajax({
+        url: "/api/users/register",
+        method: "POST",
+        data: data,
+         }).then(function (result) {
+          window.location.href = "/resources"
 
 $(() => {
 
@@ -153,6 +164,7 @@ $('#grid').on('click', '.articleFooter i', function(e) {
 //       }).then((result) => {
 //         result.id = r.id
 //         result.user_id = r.user_id
+//         result.id = r.id
 //         array.push(result)
 //         renderResources(array)
 //     });
