@@ -81,7 +81,6 @@ $.ajax({
   }).done((resources) => {
      // generatePreview(resources)
      renderResources(resources)
-
   });
 }
 
