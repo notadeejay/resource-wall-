@@ -50,7 +50,7 @@ router.get("/search", function (req, res) {
  });
 
 router.get("/myresources", function (req, res) {
-
+  console.log(req.session.user);
     knex.select("*")
       .from("resources")
       .where('user_id', req.session.user)

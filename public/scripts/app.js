@@ -10,7 +10,7 @@ const generateHTML = (obj) => {
                   <p class = "description"> ${obj.description}</p>
                 </div>
                 <div class = 'articleFooter'>
-                   <p class = 'url'>${obj.url}</p>
+                   <p><i class="material-icons">add_circle</i></p>
                 </footer>
             </article>
         </div>`
