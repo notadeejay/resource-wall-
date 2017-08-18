@@ -6,11 +6,10 @@ const generateHTML = (obj) => {
                     <h5>${obj.title}</h5>
                 </div>
                 <div class = 'articleBody'>
-                  <img src="${obj.image}">
-                  <p class = "description"> ${obj.description}</p>
+                  <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
                 </div>
                 <div class = 'articleFooter'>
-                   <p><i class="material-icons">add_circle</i></p>
+                   <a href='#'><i class="material-icons">add_circle</i></a>
                 </footer>
             </article>
         </div>`

@@ -4,13 +4,12 @@ article {
     transition: all 0.5s;
     margin: 15px;
     overflow: hidden;
-    opacity: 0.85;
+    opacity: 0.8;
 }
 
 article:hover {
     opacity: 1;
     box-shadow: 4px 4px 10px #171717;
-    transform: scale(1.02);
 }
 
 article .articleHeader {
@@ -24,18 +23,25 @@ article .articleHeader h5 {
 }
 
 article .articleBody {
-    background-color: #FFFFFF;
     height: 150px;
 }
 
 article .articleFooter {
     padding: 10px;
     color: black;
-    background-color:#FFFFFF;
     text-align: right;
-    height: 50px; // social media icon text - increase height
+    height: 55px;
 }
 
 article img {
     max-width: 360px;
+}
+
+article i {
+    color: #6898F8;
+    transition: all 0.5s;    
+}
+
+article i:hover {
+    color: #8777DB;
 }
