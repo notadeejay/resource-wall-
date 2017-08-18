@@ -8,8 +8,9 @@ const generateHTML = (obj) => {
                 <div class = 'articleBody'>
                   <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
                 </div>
-                <div class = 'articleFooter'>
-                   <a href='#'><i class="material-icons">add_circle</i></a>
+                <div class = 'articleFooter clearfix'>
+                   <a href='#'><i class="like material-icons">favorite</i></a>
+                   <a href='#'><span><i class="add material-icons">add_circle</i></span></a>
                 </footer>
             </article>
         </div>`
@@ -136,7 +137,7 @@ $('.grid').isotope({
   }
 
 
-$('#grid').on('click', '.articleFooter i', function(e) {
+$('#grid').on('click', '.articleFooter span i', function(e) {
   e.preventDefault();
   $.colorbox({
     html: "<div id='editCard'><h4>edit your card</h4><br /><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><button id='exit'>exit</button></div>",     // generateInfo(obj)

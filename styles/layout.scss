@@ -156,12 +156,20 @@ body .mainContainer .container {
 
 .tags {
   margin-top: 50px;
+  margin-bottom: 50px;
   border-top: 1px solid gray;
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .tags h5 {
   margin-top: 20px;
+}
+
+#categories {
+  margin-top: 50px;
+  padding-top: 35px;
+  border-top: 1px solid gray;
 }
 
 .main h1 {
@@ -237,6 +245,14 @@ body .mainContainer .container {
   font-size: 36px;
 }
 
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
 
 #editCard {
   background-color: #212121;

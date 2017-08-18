@@ -24,7 +24,7 @@ router.post("/register", function (req, res) {
       .insert(newUser)
       .returning(['id', 'first_name'])
       .then((result) => {
-        req.session.user = result[0];
+        req.session.user = result[0].id;
         res.status(200).redirect('/resources')
       })
 
