@@ -121,6 +121,10 @@ body .mainContainer .container {
   height: 100%;
 }
 
+#search {
+  display: none;
+}
+
 #searchBar {
   background: none;
   border: none;
@@ -217,6 +221,12 @@ body .mainContainer .container {
   position: absolute;
   top: 15px;
   left: 145px;
+}
+
+.hideMe {
+  display: none;
+  width: 1px;
+  height: 1px;
 }
 
 .wallitColor {

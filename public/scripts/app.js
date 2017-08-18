@@ -83,6 +83,7 @@ $("#search").on("submit", function(event) {
          }).then(function (resources) {
           renderResources(resources)
   });
+  $('#search').animate({width: 'toggle'});
 });
 
 
@@ -98,7 +99,7 @@ $('.grid').isotope({
 
 
   $('#searchButton').click(function() {
-    $('#searchBar').animate({width: 'toggle'});
+    $('#search').animate({width: 'toggle'});
   })
 
 //RENDER RESOURCES
