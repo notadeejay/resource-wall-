@@ -89,7 +89,6 @@ router.get("/:catid", function (req, res) {
       .where('category_id', catid)
       .then((results) => {
         res.json(results);
-        console.log(results)
     });
  });
 

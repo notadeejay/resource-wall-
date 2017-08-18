@@ -9,7 +9,13 @@ const generateHTML = (obj) => {
                   <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
                 </div>
                 <div class = 'articleFooter clearfix'>
+<<<<<<< HEAD
                    <a href='#' class='favourite' data-resID='${obj.id}'><i class="like material-icons">favorite</i></a>
+=======
+
+                   <a href='#' class='favourite' data-resid='${obj.id}'><i class="like material-icons">favorite</i></a>
+                  <span class = "test"> </span>
+>>>>>>> favourites
                    <a href='#'><span><i class="add material-icons">add_circle</i></span></a>
                 </footer>
             </article>
@@ -201,6 +207,31 @@ $(".favourite").click(function() {
            renderResources(resources)
 
        });
+
+$(document).on ('click', '.favourite', function(event) {
+    event.preventDefault();
+    const resid = $(this).data('resid')
+    const $this = $(this)
+    const classCheck = $this.children('.like').hasClass('liked')
+
+
+
+    if (!classCheck) {
+        $.ajax({
+        url: `/api/likes/${resid}`,
+        method: "POST",
+         }).then(function (resources) {
+          $this.children('.like').toggleClass('liked')
+       });
+    } else {
+        $.ajax({
+          url: `/api/likes/${resid}`,
+          method: 'DELETE'
+        }).then(function (response) {
+          $this.children('.like').toggleClass('liked')
+      });
+    }
+
   });
 
 
