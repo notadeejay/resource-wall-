@@ -44,6 +44,19 @@ router.delete('/:resid', function (req, res) {
 
     });
 
+router.get("/favourite", function (req, res) {
+
+      knex.select("*")
+      .from("likes")
+      .innerJoin("resources", "likes.resource_id", "resources.id")
+      .where('likes.user_id', req.session.user)
+      .then((results) => {
+        res.json(results);
+        console.log(results)
+    });
+
+ });
+
 
 return router
 

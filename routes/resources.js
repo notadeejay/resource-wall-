@@ -49,6 +49,7 @@ module.exports = (knex) => {
 router.get("/resources", function (req, res) {
   knex.select("*")
       .from("resources")
+      .innerJoin("likes", "resources.id", "likes.resource_id")
       .then((results) => {
         res.json(results);
 
@@ -65,7 +66,7 @@ router.get("/search", function (req, res) {
       .orWhere('url', 'like', '%'+ input+ '%')
       .then((results) => {
         res.json(results);
-        console.log(results)
+
     });
  });
 

@@ -78,7 +78,7 @@ const loadResources = () => {
 $.ajax({
     method: "GET",
     url: "/api/resources/resources"
-  }).done((resources) => {
+  }).then((resources) => {
      // generatePreview(resources)
      renderResources(resources)
   });
@@ -120,7 +120,6 @@ $('.grid').isotope({
             .sort((a,b) => b.id - a.id)
             .map(generateHTML)
             .join('')
-  console.log(data)
   $('#grid').html(html)
 }
 
@@ -171,7 +170,6 @@ $(".myresources").click(function() {
         url: "/api/resources/myresources",
         method: "GET",
          }).then(function (resources) {
-
           renderResources(resources)
 
           });
@@ -190,6 +188,15 @@ $(".category").click(function() {
        });
   });
 
+$(".faves").click(function() {
+    event.preventDefault();
+        $.ajax({
+        url: `/api/likes/favourite`,
+        method: "GET",
+         }).then(function (resources) {
+           renderResources(resources)
+       });
+  });
 
 
 $(document).on ('click', '.favourite', function(event) {
@@ -205,14 +212,14 @@ $(document).on ('click', '.favourite', function(event) {
         url: `/api/likes/${resid}`,
         method: "POST",
          }).then(function (resources) {
-          $this.children('.like').toggleClass('liked')
+          $this.children('.like').addClass('liked')
        });
     } else {
         $.ajax({
           url: `/api/likes/${resid}`,
           method: 'DELETE'
         }).then(function (response) {
-          $this.children('.like').toggleClass('liked')
+          $this.children('.like').removeClass('liked')
       });
     }
 
