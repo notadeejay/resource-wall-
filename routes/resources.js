@@ -14,7 +14,6 @@ module.exports = (knex) => {
       url: req.body.url,
       user_id: req.session.user.id
     }
-
        knex('resources')
       .insert(newResource)
       .then( (results) => {
@@ -50,7 +49,7 @@ router.get("/myresources", function (req, res) {
 
     knex.select("*")
       .from("resources")
-      .where('user_id', req.session.user.id)
+      .where('user_id', req.session.user)
       .then((results) => {
         res.json(results);
     });
