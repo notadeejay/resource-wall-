@@ -74,7 +74,7 @@ $.ajax({
   });;
 }
 
-
+//SEARCH BAR
 $("#search").on("submit", function(event) {
     let data = $(this).serialize();
     event.preventDefault();
@@ -103,7 +103,7 @@ $('.grid').isotope({
     $('#searchBar').animate({width: 'toggle'});
   })
 
-
+//RENDER RESOURCES
  const renderResources = (data) => {
   $('#grid').html('');
     let html = data
