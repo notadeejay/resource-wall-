@@ -11,7 +11,7 @@ router.post("/register", function (req, res) {
   let firstname = req.body.first_name
   let lastname = req.body.last_name
   let email = req.body.email
-  let password = bcrypt.hashSync(req.body.password, 10);
+  let password = req.body.password
 
   let newUser = {
           first_name: firstname,
@@ -34,7 +34,6 @@ router.post("/login", function (req, res) {
   const emailReq = req.body.email
   const passwordReq = req.body.password
 
-
    knex('users')
   .select('password', 'id')
   .where({'email' : emailReq})
@@ -42,9 +41,9 @@ router.post("/login", function (req, res) {
     if (!result || !result[0])  {  // NOT FOUND!
       return;
     }
-
+    console.log(result[0].id)
     var pass = result[0].password;
-    if (passwordReq === pass) {
+    if (passwordReq == pass) {
      req.session.user = result[0].id
      res.status(200).redirect("/resources")
      console.log('Success')

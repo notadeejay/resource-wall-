@@ -12,7 +12,7 @@ module.exports = (knex) => {
       title: req.body.title,
       description: req.body.description,
       url: req.body.url,
-      user_id: req.session.user
+      user_id: req.session.user.id
     }
 
        knex('resources')
@@ -50,7 +50,7 @@ router.get("/myresources", function (req, res) {
 
     knex.select("*")
       .from("resources")
-      .where('user_id', req.session.user)
+      .where('user_id', req.session.user.id)
       .then((results) => {
         res.json(results);
     });
