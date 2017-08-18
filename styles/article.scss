@@ -4,9 +4,11 @@ article {
     transition: all 0.5s;
     margin: 15px;
     overflow: hidden;
+    opacity: 0.85;
 }
 
 article:hover {
+    opacity: 1;
     box-shadow: 4px 4px 10px #171717;
     transform: scale(1.02);
 }
@@ -22,14 +24,14 @@ article .articleHeader h5 {
 }
 
 article .articleBody {
-    background-color: #6898F8;
+    background-color: #FFFFFF;
     height: 150px;
 }
 
 article .articleFooter {
     padding: 10px;
-    background-color:#6898F8;
-    height: 40px;
+    background-color:#FFFFFF;
+    height: 50px; // social media icon text - increase height
 }
 
 article img {

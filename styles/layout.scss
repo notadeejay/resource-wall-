@@ -29,6 +29,23 @@ body .mainContainer .container {
   height: 100%;
 }
 
+.mainContainer .sidebar a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.mainContainer .sidebar h3, h5 {
+  transition: 0.3s all;
+}
+
+.mainContainer .sidebar h3:hover {
+  color: #6898F8;
+}
+
+.mainContainer .sidebar h5:hover {
+  color: #8777DB;
+}
+
 .navbar {
   background-color: #212121;
   margin: 0 auto;
@@ -63,6 +80,33 @@ body .mainContainer .container {
 
 .navbar #searchBar {
   margin-top: 5px;
+}
+
+.styledForm {
+  background: none;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  width: 175px;
+  margin-right: 10px;
+}
+
+.styledForm:focus {
+  outline: none;
+}
+
+.loginButton {
+  background: linear-gradient(to right,#8777DB,#6898F8);
+  width: 75px;
+  height: 30px;
+  line-height: 7px;
+  font-size: 15px !important;
+  padding-bottom: 7px !important;
+  color: white;
+}
+
+.loginButton:hover {
+  background: linear-gradient(to right, #6898F8,#8777DB);
 }
 
 .sidebar {

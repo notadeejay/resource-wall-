@@ -13,4 +13,26 @@
 
 .main input {
     margin-bottom: 3px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    width: 500px;
+    margin-top: 15px;
+}
+
+.main input:focus {
+    outline: none;
+}
+
+.mainContainer span input {
+    background: linear-gradient(to right,#8777DB,#6898F8);
+    border: 0;
+    margin: 0 auto;
+    margin-top: 50px !important;
+    width: 150px !important;
+}
+
+.mainContainer span input:hover {
+    background: linear-gradient(to right, #6898F8,#8777DB);
 }
