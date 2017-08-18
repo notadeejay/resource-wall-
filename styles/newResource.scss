@@ -37,7 +37,7 @@ h2 {
 
 .newBody {
     padding: 25px;
-    min-height: 400px
+    
 }
 
 .newBody span input {
@@ -70,4 +70,8 @@ h2 {
 
 .submitNewCard:hover {
     background: linear-gradient(to right, #6898F8,#8777DB);
+}
+
+.radioButtons {
+    margin-right: 20px;
 }

@@ -39,18 +39,19 @@
 
         <form action="/api/resources" method="POST">
 
-          <span><input class='styledForm' type='text' name='title' placeholder='title'></span>
-          <span><input class='styledForm' type='text' name='description' placeholder='description'></span>
+         <span><input class='styledForm' type='text' name='title' placeholder='title'></span>
+         <span><input class='styledForm' type='text' name='description' placeholder='description'></span>
          <span> <input class='styledForm' type='text' name='url' placeholder='url' placeholder=''></span>
-        
-          <input type='radio' id='technology' name='900'>
-          <label for="technology">Technology</label>
-          <input type='radio' id='arts' name='902'>
-          <label for="music">Arts</label>
-          <input type='radio' id='politics' name='903'>
-          <label for="politics">Politics</label>
-          <input type='radio' id='sports' name='901'>
-          <label for="sports">Sports</label>
+          <div class='radioButtons'>
+            <input type='checkbox' id='technology' value='900' name='category'>
+            <label for="technology">Technology</label>
+            <input type='checkbox' id='arts' value='902' name='category'>
+            <label for="music">Arts</label>
+            <input type='checkbox' id='politics' value='903' name='category'>
+            <label for="politics">Politics</label>
+            <input type='checkbox' id='sports' value='901' name='category'>
+            <label for="sports">Sports</label>
+          </div>
 
         </div>
         <div class='newFooter'>
@@ -61,26 +62,10 @@
       </div>
 
 
-      //////////////
+   
 
 
-        <div class='innerContent'>
-        <h2>add new card</h2>
-        <form action="/api/resources" method="POST">
-          <input class='styledForm' type='text' name='title' placeholder='title'>
-          <input class='styledForm' type='text' name='description' placeholder='description'>
-          <input class='styledForm' type='text' name='url' placeholder='url' placeholder=''>
-          <input type='radio' id='technology' name='900'>
-          <label for="technology">Technology</label>
-          <input type='radio' id='arts' name='902'>
-          <label for="music">Arts</label>
-          <input type='radio' id='politics' name='903'>
-          <label for="politics">Politics</label>
-          <input type='radio' id='sports' name='901'>
-          <label for="sports">Sports</label>
-          <input type='submit'></button>
-        </form>
-
+        
       </div>
       </div>
     </div>
