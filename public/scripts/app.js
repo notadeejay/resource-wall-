@@ -108,7 +108,6 @@ $('.grid').isotope({
               .sort((a,b) => b.id - a.id)
               .map(generateHTML)
               .join('')
-console.log(data)
     $('#grid').html(html)
   }
 
@@ -140,9 +139,25 @@ $(".myresources").click(function() {
 
           renderResources(resources)
 
+          });
+});
+
+
+$(".category").click(function() {
+    event.preventDefault();
+    const catid = $(this).data('category')
+        $.ajax({
+        url: `/api/resources/${catid}`,
+        method: "GET",
+         }).then(function (resources) {
+           renderResources(resources)
+
+       });
   });
 
-})
+
+
+
 
 loadResources();
 
