@@ -44,9 +44,6 @@ module.exports = (knex) => {
 
       });
 
-
-
-
   });
 
 router.get("/resources", function (req, res) {

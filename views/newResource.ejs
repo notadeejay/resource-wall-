@@ -22,24 +22,54 @@
     </header>
     <div class='mainContainer'>
       <div class="sidebar">
-        <h3><a href="/new">add new +</a></h3>
-        <h3><a href="" class="goback">my resources</a></h3>
-            <div class='tags'>
-                <h5>catagory</h5>
-                <h5>catagory</h5>
-                <h5>catagory</h5>
-                <h5>catagory</h5>
-                <h5>catagory</h5>
-                <h5>catagory</h5>
-            </div>
+          <a href="/resources"><h3>home<h3/></a>
+          <div class='tags'>
+            <a href="" class="myresources"><h5></h5></a>
+            
+        </div>
       </div>
       <div class="main">
+
+
+      <div class='addNew'>
+        <div class='newHeader'>
+          <h2>new card</h2>
+        </div>
+        <div class='newBody'>
+
+        <form action="/api/resources" method="POST">
+
+          <span><input class='styledForm' type='text' name='title' placeholder='title'></span>
+          <span><input class='styledForm' type='text' name='description' placeholder='description'></span>
+         <span> <input class='styledForm' type='text' name='url' placeholder='url' placeholder=''></span>
+        
+          <input type='radio' id='technology' name='900'>
+          <label for="technology">Technology</label>
+          <input type='radio' id='arts' name='902'>
+          <label for="music">Arts</label>
+          <input type='radio' id='politics' name='903'>
+          <label for="politics">Politics</label>
+          <input type='radio' id='sports' name='901'>
+          <label for="sports">Sports</label>
+
+        </div>
+        <div class='newFooter'>
+    
+          <input type='submit' class='btn submitNewCard'></button>
+          
+        </div>
+      </div>
+
+
+      //////////////
+
+
         <div class='innerContent'>
         <h2>add new card</h2>
         <form action="/api/resources" method="POST">
-          <input type='text' name='title' placeholder='title'>
-          <input type='text' name='description' placeholder='description'>
-          <input type='text' name='url' placeholder='url' placeholder=''>
+          <input class='styledForm' type='text' name='title' placeholder='title'>
+          <input class='styledForm' type='text' name='description' placeholder='description'>
+          <input class='styledForm' type='text' name='url' placeholder='url' placeholder=''>
           <input type='radio' id='technology' name='900'>
           <label for="technology">Technology</label>
           <input type='radio' id='arts' name='902'>
@@ -50,12 +80,9 @@
           <label for="sports">Sports</label>
           <input type='submit'></button>
         </form>
+
       </div>
       </div>
     </div>
   </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> master

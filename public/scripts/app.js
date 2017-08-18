@@ -142,7 +142,7 @@ $('#grid').on('click', '.articleFooter span i', function(e) {
   $.colorbox({
     html: "<div id='editCard'><h4>edit your card</h4><br /><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><button id='exit'>exit</button></div>",     // generateInfo(obj)
     width: 500,
-    transition: "elastic",
+    transition: "elastic"
   });
 });
 
