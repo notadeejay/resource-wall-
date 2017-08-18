@@ -124,6 +124,7 @@ console.log(data)
 //       }).then((result) => {
 //         result.id = r.id
 //         result.user_id = r.user_id
+//         result.id = r.id
 //         array.push(result)
 //         renderResources(array)
 //     });
