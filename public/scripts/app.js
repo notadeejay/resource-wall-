@@ -30,6 +30,8 @@ const generateInfo = (obj) => {
   return html;
 }
 
+$(() => {
+
 //REGISTRATION HANDLER
 $("#registrationform").on("submit", function (event) {
     let $this = $(this)
@@ -42,7 +44,6 @@ $("#registrationform").on("submit", function (event) {
          }).then(function (result) {
           window.location.href = "/resources"
 
-$(() => {
 
   //REGISTRATION HANDLER
   $("#registrationform").on("submit", function (event) {
