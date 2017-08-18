@@ -236,3 +236,24 @@ body .mainContainer .container {
 .material-icons {
   font-size: 36px;
 }
+
+#editCard {
+  background-color: #212121;
+  color: white;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 3px 3px 3px black;
+}
+
+#cboxLoadedContent {
+  margin: 0px !important;
+}
+
+#cboxOverlay {
+  background-color: black !important;
+  opacity: 0.5 !important;
+}
+
+#cboxContent  {
+  background-color: #212121 !important;
+}

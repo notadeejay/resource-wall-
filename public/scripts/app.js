@@ -18,7 +18,7 @@ const generateHTML = (obj) => {
 
 const generateInfo = (obj) => {
   const html = `
-            <dialog id='editCard'>
+            <div id='editCard'>
               <h4>edit your cars</h4>
               <p>sample stuff</p>
               <p>sample stuff</p>
@@ -26,7 +26,7 @@ const generateInfo = (obj) => {
               <p>sample stuff</p>
               <p>sample stuff</p>
               <button id='exit'>exit</button>
-            </dialog>`;
+            </div>`;
   return html;
 }
 
@@ -124,11 +124,20 @@ $('.grid').isotope({
   $('#grid').html(html)
 }
 
+
+  const renderInfo = (data) => {
+
+  // move render info in here from below   
+
+  }
+
+
 $('#grid').on('click', '.articleFooter i', function(e) {
   e.preventDefault();
   $.colorbox({
-    html: "<h3>pass data to me!!</h3>",  // pass data with 'generateInfo(obj)'
-    width: 500
+    html: "<div id='editCard'><h4>edit your card</h4><br /><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><button id='exit'>exit</button></div>",     // generateInfo(obj)
+    width: 500,
+    transition: "elastic",
   });
 });
 
