@@ -7,6 +7,7 @@ module.exports = (knex) => {
 
 
   router.post("/", function (req, res) {
+  console.log(req.body)
 
     let newResource = {
       title: req.body.title,
@@ -19,6 +20,9 @@ module.exports = (knex) => {
       .then( (results) => {
        res.status(200).redirect('/resources')
       });
+
+
+
 
   });
 
