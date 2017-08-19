@@ -1,15 +1,17 @@
 const generateHTML = (obj) => {
   const html = `
       <div class ="grid-item">
-        <article data-owner="${obj.user_id}">
+        <article data-owner="${obj.user_id}" class="resource">
                 <div class = 'articleHeader'>
                     <h5>${obj.title}</h5>
-                    <a href='#'><i class="add material-icons">close</i></a>
+                    <a href='#'><i class="add material-icons" id="delete" data-resID='${obj.id}'>close</i></a>
                     <p>test</p>
                 </div>
+                <a href="${obj.url}" target="_blank">
                 <div class = 'articleBody'>
                   <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
                 </div>
+                </a>
                 <div class = 'articleFooter clearfix'>
                    <a href='#' class='favourite' id='R${obj.id}' data-resID='${obj.id}'><i class="like material-icons">favorite</i></a>
                    <a href='#' class="commentsbox" data-resource='${obj.id}'><span><i class="add material-icons">insert_comment</i></span></a>
@@ -18,25 +20,6 @@ const generateHTML = (obj) => {
         </div>`
   return html;
 }
-
-const generateComments = (obj) => {
-  const html = `
-            <div id='editCard'>
-              <h4>add comments</h4>
-              <input type='text' name="commentinput" placeholder="comment">
-              <span class = "comments"></span>
-              <button id='exit'>exit</button>
-            </div>`;
-  return html;
-}
-
-
-
-
-
-
-
-
 
 
 $(() => {
@@ -71,7 +54,7 @@ $(() => {
     });
   });
 
-  const getCurrentUser = () => {
+const getCurrentUser = () => {
   $.ajax({
     url: "/api/users",
     method: "GET"
@@ -298,8 +281,31 @@ $(".topfaves").click(function() {
   });
 
 
-  
 
+$(document).on('mouseenter mouseleave', '.resource', function (event) {
+   let user = JSON.parse(localStorage.getItem('currentUser'))
+   let userID = $(this).data('owner')
+
+   if(user[0].id == userID) {
+    $(this).find("#delete").toggle()
+   }
+
+});
+
+$(document).on('click', '#delete', function (event) {
+  const resid = $(this).data('resid')
+  const user = JSON.parse(localStorage.getItem('currentUser'))
+  const userID = user[0].id
+
+   $.ajax({
+    url: `api/resources/${resid}/${userID}`,
+    method: 'DELETE',
+    data: user[0].id
+   }).then(function (resources) {
+
+   })
+
+});
 
 
 

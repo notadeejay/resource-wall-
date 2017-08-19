@@ -74,9 +74,14 @@ article .articleHeader a i {
     color: lightgrey;
     transition: 0.5s all;
     font-size: 30px;
+    display: none;
 }
 
 article .articleHeader a i:hover {
     color: red;
     transform: scale(1.2);
+}
+
+article .articleHeader a:hover{
+    text-decoration: none;
 }
