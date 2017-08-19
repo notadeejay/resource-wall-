@@ -79,6 +79,8 @@ $(() => {
   })
 }
 
+$()
+
 //LOGOUT HANDLER
   $(".logoutbutton").on("click", function (event) {
     event.preventDefault();
