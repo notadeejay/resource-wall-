@@ -159,8 +159,10 @@ $('#grid').on('click', '.commentsbox', function(e) {
         $.colorbox({
           html: `<div id='editCard'>
           <h4>comments</h4><br />${renderInfo(results)}
+          <form role="form" id="addcomment">
           <input type=text name="usercomment">
-          <button id='exit'>exit</button></div>`,     // generateInfo(obj)
+          <input type=submit class="btn btn-info"></button></div>
+          </form>`,     // generateInfo(obj)
           width: 500,
           transition: "elastic"
        });
@@ -168,6 +170,19 @@ $('#grid').on('click', '.commentsbox', function(e) {
 
 });
 
+$(document).on ('submit', '#addcomment', function(event) {
+  event.preventDefault();
+  let data = $(this).serialize()
+  let resid = $('.commentsbox').data('resource')
+
+    $.ajax({
+      url: `/api/comments/${resid}`,
+      method: 'POST',
+      data: data
+    }).then(function (results){
+         renderInfo(results)
+    })
+})
 
 const generateComments = (obj) => {
   const html = `
@@ -176,7 +191,6 @@ const generateComments = (obj) => {
 }
 
 const renderInfo = (data) => {
-
     let html = data
               .sort((a,b) => b.id - a.id)
               .map(generateComments)
