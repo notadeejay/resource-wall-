@@ -9,7 +9,7 @@ const generateHTML = (obj) => {
                   <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
                 </div>
                 <div class = 'articleFooter clearfix'>
-                   <a href='#' class='favourite' data-resID='${obj.id}'><i class="like material-icons">favorite</i></a>
+                   <a href='#' class='favourite' id='R${obj.id}' data-resID='${obj.id}'><i class="like material-icons">favorite</i></a>
                   <span class = "test"> </span>
                    <a href='#'><span><i class="add material-icons">add_circle</i></span></a>
                 </footer>
@@ -22,6 +22,7 @@ const generateInfo = (obj) => {
   const html = `
             <div id='editCard'>
               <h4>edit your cars</h4>
+              <input type='text' name="comment" placeholder="comment">
               <p>sample stuff</p>
               <p>sample stuff</p>
               <p>sample stuff</p>
@@ -81,7 +82,16 @@ $.ajax({
   }).then((resources) => {
      // generatePreview(resources)
      renderResources(resources)
+
+     let likes = JSON.parse(localStorage.getItem('favourites'));
+     console.log(likes)
+       for (var i = 0; i < likes.length; i++) {
+          if (likes[i].value == true) {
+            $('#R'+ likes[i].id).children('.like').addClass("liked")
+           }
+        }
   });
+
 }
 
 //SEARCH BAR
@@ -125,12 +135,7 @@ $('.grid').isotope({
 
   $('#searchButton').click(function() {
     $('#search').animate({width: 'toggle'});
-    swal({
-        title: "Error!",
-        text: "Here's my error message!",
-        type: "error",
-        confirmButtonText: "Cool"
-      });
+
   })
 
 //RENDER RESOURCES
@@ -232,23 +237,35 @@ $(document).on ('click', '.favourite', function(event) {
     event.preventDefault();
     const resid = $(this).data('resid')
     const $this = $(this)
-    const classCheck = $this.children('.like').hasClass('liked')
+    const favs = [];
+   $this.children('.like').toggleClass('liked')
+
+    $('.favourite').each(function () {
+     let fav = {
+            id: $(this).data('resid'),
+            value: $(this).children('.like').hasClass('liked')
+          };
+        favs.push(fav);
+      });
+
+    localStorage.setItem("favourites", JSON.stringify(favs));
+
+    let likes = JSON.parse(localStorage.getItem('favourites'));
 
 
-
-    if (!classCheck) {
+    if ($(this).children('.like').hasClass('liked')) {
         $.ajax({
         url: `/api/likes/${resid}`,
         method: "POST",
          }).then(function (resources) {
-          $this.children('.like').addClass('liked')
+
        });
     } else {
         $.ajax({
           url: `/api/likes/${resid}`,
           method: 'DELETE'
         }).then(function (response) {
-          $this.children('.like').removeClass('liked')
+
       });
     }
 
