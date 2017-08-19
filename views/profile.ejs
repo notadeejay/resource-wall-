@@ -22,25 +22,41 @@
     <header>
       <% include partials/_nav %>
     </header>
+    
     <div class='mainContainer'>
-      <div class="sidebar">
-        <h3><a href="/new">add new +</a></h3>
-      </div>
-      <div class="main">
-        <div class="innerContent">
-          <div class='container'>
-          <h1>Edit profile!</h1>
-            <form role='form' id="edit">
-                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
-                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
-                <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
-                <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
-                <input type="submit" id='editSubmit' value="Save Changes" class="btn btn-info btn-block">
-            </form>
+     <div class="sidebar">
+          <a href="/resources"><h3>home<h3/></a>
+          <div class='tags'>
+            <a href="" class="myresources"></a>
           </div>
+      </div>
+      <div class='main'>
+        <div class="editProfile">
+        <div class='editHeader'>
+          <h2>edit profile</h2>
+        </div>
+        <div class='editBody'>
+          <form role='form' id="edit">
+            <span><input class='styledForm' type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name"></span>
+            <span><input class='styledForm' type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name"></span>
+            <span><input class='styledForm' type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address"></span>
+            <span><input class='styledForm' type="password" name="password" id="password" class="form-control input-sm" placeholder="Password"></span>
+            <span><input class='styledForm' type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password"></span>
+        </div>
+        <div class='editFooter'>
+            <input type="submit" id='editSubmit' value="Save Changes" class="btn submitNewCard">
+          </form>
+        </div>
+        
+        
+        
+        
         </div>
       </div>
+
+
+    
     </div>
   </body>
 </html>
+

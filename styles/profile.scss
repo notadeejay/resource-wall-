@@ -1,0 +1,57 @@
+h2 {
+    padding: 25px;
+}
+
+.editProfile {
+    background-color: #212121;
+    margin: 0 auto;
+    width: 600px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.editHeader {
+    height: 90px;
+    background: linear-gradient(to right,#8777DB,#6898F8);    
+}
+
+.editBody {
+    padding: 25px;
+    
+}
+
+.editBody span input {
+    font-size: 120%;
+    padding-top: 25px;
+    margin: 0 auto;
+    width: 350px;
+    display: block;
+}
+
+.editBody input {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.editFooter {
+    padding: 25px;
+    height: 100px;
+}
+
+.submitNewCard {
+    background: linear-gradient(to right,#8777DB,#6898F8);
+    width: 150px;
+    height: 30px;
+    line-height: 7px;
+    font-size: 15px !important;
+    padding-bottom: 7px !important;
+    color: white;
+}
+
+.submitNewCard:hover {
+    background: linear-gradient(to right, #6898F8,#8777DB);
+}
+
+.radioButtons {
+    margin-right: 20px;
+}
