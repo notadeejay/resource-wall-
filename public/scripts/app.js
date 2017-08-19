@@ -44,7 +44,7 @@ $(() => {
           method: "POST",
           data: data,
       }).then(function (result) {
-        window.location.href = "/new"
+        window.location.href = "/resources"
       });
   });
 
