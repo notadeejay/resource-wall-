@@ -49,6 +49,9 @@ app.use("/api/comments", commentRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
+  if (req.session.user) {
+    res.redirect("/resources")
+  }
   let templateVars = {
     user: req.session.user
   }

@@ -73,6 +73,7 @@ $()
       method: "POST"
     }).then(function (result) {
       window.location.href = "/"
+      localStorage.removeItem("currentUser")
     });
   });
 

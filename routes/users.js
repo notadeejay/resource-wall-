@@ -59,6 +59,10 @@ router.post("/login", function (req, res) {
   const emailReq = req.body.email
   const passwordReq = req.body.password
 
+  if(!emailReq || !passwordReq) {
+    res.status(403).send('Must provide valid email and password')
+  }
+
   knex('users')
   .select('password', 'id')
   .where({'email' : emailReq})
