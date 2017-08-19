@@ -19,6 +19,7 @@ const session = require('express-session')
 const usersRoutes = require("./routes/users");
 const resourceRoutes = require("./routes/resources")
 const likeRoutes = require("./routes/likes")
+const commentRoutes = require("./routes/comments")
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -43,6 +44,7 @@ app.use(session({
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/resources", resourceRoutes(knex));
 app.use("/api/likes", likeRoutes(knex));
+app.use("/api/comments", commentRoutes(knex));
 
 
 // Home page

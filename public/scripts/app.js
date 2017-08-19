@@ -11,23 +11,19 @@ const generateHTML = (obj) => {
                 <div class = 'articleFooter clearfix'>
                    <a href='#' class='favourite' id='R${obj.id}' data-resID='${obj.id}'><i class="like material-icons">favorite</i></a>
                   <span class = "test"> </span>
-                   <a href='#'><span><i class="add material-icons">add_circle</i></span></a>
+                   <a href='#' class="commentsbox" data-resource='${obj.id}'><span><i class="add material-icons">add_circle</i></span></a>
                 </footer>
             </article>
         </div>`
   return html;
 }
 
-const generateInfo = (obj) => {
+const generateComments = (obj) => {
   const html = `
             <div id='editCard'>
-              <h4>edit your cars</h4>
-              <input type='text' name="comment" placeholder="comment">
-              <p>sample stuff</p>
-              <p>sample stuff</p>
-              <p>sample stuff</p>
-              <p>sample stuff</p>
-              <p>sample stuff</p>
+              <h4>add comments</h4>
+              <input type='text' name="commentinput" placeholder="comment">
+              <span class = "comments"></span>
               <button id='exit'>exit</button>
             </div>`;
   return html;
@@ -75,6 +71,15 @@ $(() => {
   });
 
 
+const checkLikes = () => {
+  let likes = JSON.parse(localStorage.getItem('favourites'));
+       for (var i = 0; i < likes.length; i++) {
+          if (likes[i].value == true) {
+            $('#R'+ likes[i].id).children('.like').addClass("liked")
+           }
+        }
+}
+
 const loadResources = () => {
 $.ajax({
     method: "GET",
@@ -82,14 +87,7 @@ $.ajax({
   }).then((resources) => {
      // generatePreview(resources)
      renderResources(resources)
-
-     let likes = JSON.parse(localStorage.getItem('favourites'));
-     console.log(likes)
-       for (var i = 0; i < likes.length; i++) {
-          if (likes[i].value == true) {
-            $('#R'+ likes[i].id).children('.like').addClass("liked")
-           }
-        }
+     checkLikes();
   });
 
 }
@@ -104,6 +102,7 @@ $("#search").on("submit", function(event) {
         data: data,
          }).then(function (resources) {
           renderResources(resources)
+          checkLikes()
   });
   $('#search').animate({width: 'toggle'});
 });
@@ -149,26 +148,43 @@ $('.grid').isotope({
 }
 
 
-  const renderInfo = (data) => {
+$('#grid').on('click', '.commentsbox', function(e) {
+  e.preventDefault();
+  let data = $(this).data('resource')
+   $.ajax ({
+     url:`/api/comments/${data}`,
+     method: "GET",
+   }).then(function (results) {
 
-  // move render info in here from below
+        $.colorbox({
+          html: `<div id='editCard'>
+          <h4>comments</h4><br />${renderInfo(results)}
+          <input type=text name="usercomment">
+          <button id='exit'>exit</button></div>`,     // generateInfo(obj)
+          width: 500,
+          transition: "elastic"
+       });
+   });
+
+});
+
+
+const generateComments = (obj) => {
+  const html = `
+              <span class = "comments">${obj.comment}</span> `;
+  return html;
+}
+
+const renderInfo = (data) => {
 
     let html = data
               .sort((a,b) => b.id - a.id)
-              .map(generateHTML)
+              .map(generateComments)
               .join('')
-    $('#grid').html(html)
-  }
+   return html
 
+}
 
-$('#grid').on('click', '.articleFooter span i', function(e) {
-  e.preventDefault();
-  $.colorbox({
-    html: "<div id='editCard'><h4>edit your card</h4><br /><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><button id='exit'>exit</button></div>",     // generateInfo(obj)
-    width: 500,
-    transition: "elastic"
-  });
-});
 
 //   const generatePreview = (obj) => {
 //     let key = '599620a6888eff2fedf501c8f8271e520e3301cc25605'
@@ -196,6 +212,7 @@ $(".myresources").click(function() {
         method: "GET",
          }).then(function (resources) {
           renderResources(resources)
+          checkLikes();
 
           });
 });
@@ -209,6 +226,7 @@ $(".category").click(function() {
         method: "GET",
          }).then(function (resources) {
            renderResources(resources)
+           checkLikes();
 
        });
   });
@@ -220,6 +238,7 @@ $(".faves").click(function() {
         method: "GET",
          }).then(function (resources) {
            renderResources(resources)
+           checkLikes();
        });
   });
 
@@ -230,6 +249,7 @@ $(".topfaves").click(function() {
         method: "GET",
          }).then(function (resources) {
            renderResources(resources)
+           checkLikes();
        });
   });
 
