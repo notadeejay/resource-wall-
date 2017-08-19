@@ -8,6 +8,16 @@ module.exports = (knex) => {
 
 //ADD NEW USER TO DATABASE @ REGISTRATION
 router.post("/register", function (req, res) {
+
+  if (!req.body.first_name || !req.body.last_name) {
+    return res.status(400).send(`You must provide a first and last name.`)}
+  if (!req.body.email) {
+    return res.status(400).send(`You must provide an email address.`)}
+  if (!req.body.password) {
+    return res.status(400).send(`You must create a password.`)}
+  if (req.body.password != req.body.password_confirmation) {
+    return res.status(400).send(`Passwords do not match.`)}
+
   let firstname = req.body.first_name
   let lastname = req.body.last_name
   let email = req.body.email
