@@ -99,6 +99,18 @@ $("#search").on("submit", function(event) {
 });
 
 
+//EDIT PROFILE
+$("#edit").on("submit", function(event) {
+  let data = $(this).serialize();
+  $("#edit").trigger("reset");
+  event.preventDefault();
+  $.ajax({
+    url: "/api/users/edit",
+    method: "PUT",
+    data: data,
+  }).then(function (resources) {
+  })
+});
 
 $('.grid').isotope({
     layoutMode: 'cellsByRow',
