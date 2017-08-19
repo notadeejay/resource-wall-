@@ -1,7 +1,7 @@
 const generateHTML = (obj) => {
   const html = `
       <div class ="grid-item">
-        <article>
+        <article data-owner="${obj.user_id}">
                 <div class = 'articleHeader'>
                     <h5>${obj.title}</h5>
                 </div>
@@ -29,6 +29,15 @@ const generateComments = (obj) => {
   return html;
 }
 
+
+
+
+
+
+
+
+
+
 $(() => {
 
   //REGISTRATION HANDLER
@@ -42,6 +51,7 @@ $(() => {
           data: data,
       }).then(function (result) {
         window.location.href = "/resources"
+        getCurrentUser();
       });
   });
 
@@ -56,8 +66,18 @@ $(() => {
         data: data,
     }).then(function (result) {
       window.location.href = "/resources"
+      getCurrentUser();
     });
   });
+
+  const getCurrentUser = () => {
+  $.ajax({
+    url: "/api/users",
+    method: "GET"
+  }).then(function (result) {
+    localStorage.setItem("currentUser", JSON.stringify(result))
+  })
+}
 
 //LOGOUT HANDLER
   $(".logoutbutton").on("click", function (event) {
@@ -180,7 +200,16 @@ $(document).on ('submit', '#addcomment', function(event) {
       method: 'POST',
       data: data
     }).then(function (results){
-         renderInfo(results)
+         $.colorbox({
+          html: `<div id='editCard'>
+          <h4>comments</h4><br />${renderInfo(results)}
+          <form role="form" id="addcomment">
+          <input type=text name="usercomment">
+          <input type=submit class="btn btn-info"></button></div>
+          </form>`,     // generateInfo(obj)
+          width: 500,
+          transition: "elastic"
+       });
     })
 })
 
@@ -308,7 +337,6 @@ $(document).on ('click', '.favourite', function(event) {
 
 
 loadResources();
-
 });
 
 
