@@ -31,14 +31,6 @@ const generateComments = (obj) => {
 }
 
 
-
-
-
-
-
-
-
-
 $(() => {
 
   //REGISTRATION HANDLER
