@@ -210,6 +210,15 @@ $(".faves").click(function() {
        });
   });
 
+$(".topfaves").click(function() {
+    event.preventDefault();
+        $.ajax({
+        url: `/api/likes/top`,
+        method: "GET",
+         }).then(function (resources) {
+           renderResources(resources)
+       });
+  });
 
 $(document).on ('click', '.favourite', function(event) {
     event.preventDefault();
