@@ -59,12 +59,6 @@ router.post("/login", function (req, res) {
   const emailReq = req.body.email
   const passwordReq = req.body.password
 
-if(!emailReq) {
-  res.status(403).send('You must enter a valid e-mail address')
- } else if (!passwordReq) {
-  res.status(403).send('You must enter a valid password')
- }
-
   knex('users')
   .select('password', 'id')
   .where({'email' : emailReq})
@@ -79,7 +73,7 @@ if(!emailReq) {
 
      console.log('Success')
    } else {
-    res.status(401).send('Sorry, that email and password combination is incorrect.')
+    console.log('Failed login')
   }
 })
   .catch(function(error) {
