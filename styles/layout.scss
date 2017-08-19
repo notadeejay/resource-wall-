@@ -40,10 +40,12 @@ body .mainContainer .container {
 
 .mainContainer .sidebar h3:hover {
   color: #6898F8;
+ 
 }
 
 .mainContainer .sidebar h5:hover {
   color: #8777DB;
+  transform: scale(1.2);
 }
 
 .navbar {
@@ -279,3 +281,11 @@ body .mainContainer .container {
   background-color: #212121 !important;
 }
 
+.selected {
+  transform: scale(1.2);
+  color: dodgerblue;
+}
+
+.grow:hover {
+  transform: scale(1.15);
+}
