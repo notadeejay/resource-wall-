@@ -4,14 +4,15 @@ const generateHTML = (obj) => {
         <article data-owner="${obj.user_id}">
                 <div class = 'articleHeader'>
                     <h5>${obj.title}</h5>
+                    <a href='#'><i class="add material-icons">close</i></a>
+                    <p>test</p>
                 </div>
                 <div class = 'articleBody'>
                   <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
                 </div>
                 <div class = 'articleFooter clearfix'>
                    <a href='#' class='favourite' id='R${obj.id}' data-resID='${obj.id}'><i class="like material-icons">favorite</i></a>
-                  <span class = "test"> </span>
-                   <a href='#' class="commentsbox" data-resource='${obj.id}'><span><i class="add material-icons">add_circle</i></span></a>
+                   <a href='#' class="commentsbox" data-resource='${obj.id}'><span><i class="add material-icons">insert_comment</i></span></a>
                 </footer>
             </article>
         </div>`
@@ -295,6 +296,14 @@ $(".topfaves").click(function() {
            checkLikes();
        });
   });
+
+
+  
+
+
+
+
+
 
 $(document).on ('click', '.favourite', function(event) {
     event.preventDefault();
