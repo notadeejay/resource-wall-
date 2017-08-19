@@ -53,6 +53,10 @@ body .mainContainer .container {
   border-bottom: 1px solid white;
 }
 
+.dropdown-menu {
+  padding: 0 !important;
+}
+
 .navbar-nav > li > .dropdown-menu {
   background-color: #212121;
   border: 1px solid white;
@@ -63,7 +67,7 @@ body .mainContainer .container {
 }
 
 .navbar-nav > li > .dropdown-menu > a:hover {
-  color: #212121;
+  background: linear-gradient(to right,#8777DB,#6898F8);
 }
 
 .navbar-brand {
