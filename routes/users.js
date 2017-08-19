@@ -24,7 +24,7 @@ router.post("/register", function (req, res) {
       .insert(newUser)
       .returning(['id', 'first_name'])
       .then((result) => {
-        req.session.user = result[0];
+        req.session.user = result[0].id;
         res.status(200).redirect('/resources')
       })
 
@@ -61,7 +61,33 @@ router.post("/login", function (req, res) {
     res.status(201).redirect("/");
   });
 
+  //EDIT USER PROFILE
+    router.put("/edit", function (req, res) {
+
+      if (req.body.password != "") {
+        if (req.body.password === req.body.password_confirmation) {
+          let newpassword = req.body.password
+        }
+          else {
+            alert(`Passwords do not match!`)
+          }
+        }
+
+        const editUser = {
+          first_name: req.body.first_name || undefined,
+          last_name: req.body.last_name || undefined,
+          email: req.body.email || undefined,
+          password: req.body.password || undefined
+        }
+
+           knex('users')
+          .where('id', req.session.user)
+          .update(editUser)
+          .then((result) => {
+            console.log(result)
+            res.status(200).send()
+          })
+      });
 
   return router;
 }
-
