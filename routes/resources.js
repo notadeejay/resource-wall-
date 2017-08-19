@@ -2,9 +2,10 @@
 
 const express = require('express');
 const router  = express.Router();
+const request = require('request');
+const bodyParser  = require("body-parser");
 
 module.exports = (knex) => {
-
 
   router.post("/", function (req, res) {
     let categories;
@@ -15,7 +16,6 @@ module.exports = (knex) => {
         categories = []
         categories.push(req.body.category)
       }
-      console.log(categories)
 
     let newResource = {
       title: req.body.title,
@@ -27,24 +27,33 @@ module.exports = (knex) => {
       .insert(newResource)
       .returning('id')
       .then( (results) => {
-
-        const cat_resource = categories.map(function(catid) {
-          const obj = {
-            resource_id: results[0],
-            category_id: catid
-          }
-          return obj
+          const cat_resource = categories.map(function(catid) {
+            const obj = {
+              resource_id: results[0],
+              category_id: catid
+            }
+            return obj
+          })
+           knex('resource_categories')
+          .insert (cat_resource)
+          .returning(['resource_id'])
+      .then((results) => {
+        request(`https://api.linkpreview.net/?key=599620a6888eff2fedf501c8f8271e520e3301cc25605&q=${req.body.url}`
+          , function (error, response, body) {
+        let preview = JSON.parse(body)
+        let image = preview.image
+        knex('resources')
+        .where('id', results[0].resource_id)
+        .update('image', image)
+        .then((results) => {
+          res.status(200).redirect('/resources')
         })
-         console.log(cat_resource)
-         knex('resource_categories')
-        .insert (cat_resource)
-        .then ( (results) => {
-            res.status(200).redirect('/resources')
+
+            });
          })
-
       });
-
   });
+
 
 router.get("/resources", function (req, res) {
   knex.select("*")
@@ -96,5 +105,3 @@ router.get("/:catid", function (req, res) {
 return router
 
 }
-
-
