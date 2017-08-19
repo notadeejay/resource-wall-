@@ -1,37 +1,26 @@
 const generateHTML = (obj) => {
   const html = `
       <div class ="grid-item">
-        <article>
+        <article data-owner="${obj.user_id}" class="resource">
                 <div class = 'articleHeader'>
                     <h5>${obj.title}</h5>
+                    <a href='#'><i class="add material-icons" id="delete" data-resID='${obj.id}'>close</i></a>
+                    <p>test</p>
                 </div>
+                <a href="${obj.url}" target="_blank">
                 <div class = 'articleBody'>
                   <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
                 </div>
+                </a>
                 <div class = 'articleFooter clearfix'>
                    <a href='#' class='favourite' id='R${obj.id}' data-resID='${obj.id}'><i class="like material-icons">favorite</i></a>
-                  <span class = "test"> </span>
-                   <a href='#'><span><i class="add material-icons">add_circle</i></span></a>
+                   <a href='#' class="commentsbox" data-resource='${obj.id}'><span><i class="add material-icons">insert_comment</i></span></a>
                 </footer>
             </article>
         </div>`
   return html;
 }
 
-const generateInfo = (obj) => {
-  const html = `
-            <div id='editCard'>
-              <h4>edit your cars</h4>
-              <input type='text' name="comment" placeholder="comment">
-              <p>sample stuff</p>
-              <p>sample stuff</p>
-              <p>sample stuff</p>
-              <p>sample stuff</p>
-              <p>sample stuff</p>
-              <button id='exit'>exit</button>
-            </div>`;
-  return html;
-}
 
 $(() => {
 
@@ -46,6 +35,7 @@ $(() => {
           data: data,
       }).then(function (result) {
         window.location.href = "/resources"
+        getCurrentUser();
       });
   });
 
@@ -60,8 +50,20 @@ $(() => {
         data: data,
     }).then(function (result) {
       window.location.href = "/resources"
+      getCurrentUser();
     });
   });
+
+const getCurrentUser = () => {
+  $.ajax({
+    url: "/api/users",
+    method: "GET"
+  }).then(function (result) {
+    localStorage.setItem("currentUser", JSON.stringify(result))
+  })
+}
+
+$()
 
 //LOGOUT HANDLER
   $(".logoutbutton").on("click", function (event) {
@@ -75,6 +77,15 @@ $(() => {
   });
 
 
+const checkLikes = () => {
+  let likes = JSON.parse(localStorage.getItem('favourites'));
+       for (var i = 0; i < likes.length; i++) {
+          if (likes[i].value == true) {
+            $('#R'+ likes[i].id).children('.like').addClass("liked")
+           }
+        }
+}
+
 const loadResources = () => {
 $.ajax({
     method: "GET",
@@ -82,14 +93,7 @@ $.ajax({
   }).then((resources) => {
      // generatePreview(resources)
      renderResources(resources)
-
-     let likes = JSON.parse(localStorage.getItem('favourites'));
-     console.log(likes)
-       for (var i = 0; i < likes.length; i++) {
-          if (likes[i].value == true) {
-            $('#R'+ likes[i].id).children('.like').addClass("liked")
-           }
-        }
+     checkLikes();
   });
 
 }
@@ -104,6 +108,7 @@ $("#search").on("submit", function(event) {
         data: data,
          }).then(function (resources) {
           renderResources(resources)
+          checkLikes()
   });
   $('#search').animate({width: 'toggle'});
 });
@@ -149,26 +154,66 @@ $('.grid').isotope({
 }
 
 
-  const renderInfo = (data) => {
+$('#grid').on('click', '.commentsbox', function(e) {
+  e.preventDefault();
+  let data = $(this).data('resource')
+   $.ajax ({
+     url:`/api/comments/${data}`,
+     method: "GET",
+   }).then(function (results) {
 
-  // move render info in here from below
+        $.colorbox({
+          html: `<div id='editCard'>
+          <h4>comments</h4><br />${renderInfo(results)}
+          <form role="form" id="addcomment">
+          <input type=text name="usercomment">
+          <input type=submit class="btn btn-info"></button></div>
+          </form>`,     // generateInfo(obj)
+          width: 500,
+          transition: "elastic"
+       });
+   });
 
+});
+
+$(document).on ('submit', '#addcomment', function(event) {
+  event.preventDefault();
+  let data = $(this).serialize()
+  let resid = $('.commentsbox').data('resource')
+
+    $.ajax({
+      url: `/api/comments/${resid}`,
+      method: 'POST',
+      data: data
+    }).then(function (results){
+         $.colorbox({
+          html: `<div id='editCard'>
+          <h4>comments</h4><br />${renderInfo(results)}
+          <form role="form" id="addcomment">
+          <input type=text name="usercomment">
+          <input type=submit class="btn btn-info"></button></div>
+          </form>`,     // generateInfo(obj)
+          width: 500,
+          transition: "elastic"
+       });
+    })
+})
+
+const generateComments = (obj) => {
+  const html = `
+              <span class = "comments">${obj.comment}</span> `;
+  return html;
+}
+
+const renderInfo = (data) => {
     let html = data
               .sort((a,b) => b.id - a.id)
-              .map(generateHTML)
+              .map(generateComments)
               .join('')
-    $('#grid').html(html)
-  }
+   return html
 
+}
 
-$('#grid').on('click', '.articleFooter span i', function(e) {
-  e.preventDefault();
-  $.colorbox({
-    html: "<div id='editCard'><h4>edit your card</h4><br /><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><p>sample stuff</p><button id='exit'>exit</button></div>",     // generateInfo(obj)
-    width: 500,
-    transition: "elastic"
-  });
-});
 
 //   const generatePreview = (obj) => {
 //     let key = '599620a6888eff2fedf501c8f8271e520e3301cc25605'
@@ -196,6 +241,7 @@ $(".myresources").click(function() {
         method: "GET",
          }).then(function (resources) {
           renderResources(resources)
+          checkLikes();
 
           });
 });
@@ -209,6 +255,7 @@ $(".category").click(function() {
         method: "GET",
          }).then(function (resources) {
            renderResources(resources)
+           checkLikes();
 
        });
   });
@@ -220,6 +267,7 @@ $(".faves").click(function() {
         method: "GET",
          }).then(function (resources) {
            renderResources(resources)
+           checkLikes();
        });
   });
 
@@ -230,8 +278,40 @@ $(".topfaves").click(function() {
         method: "GET",
          }).then(function (resources) {
            renderResources(resources)
+           checkLikes();
        });
   });
+
+
+
+$(document).on('mouseenter mouseleave', '.resource', function (event) {
+   let user = JSON.parse(localStorage.getItem('currentUser'))
+   let userID = $(this).data('owner')
+
+   if(user[0].id == userID) {
+    $(this).find("#delete").toggle()
+   }
+
+});
+
+$(document).on('click', '#delete', function (event) {
+  const resid = $(this).data('resid')
+  const user = JSON.parse(localStorage.getItem('currentUser'))
+  const userID = user[0].id
+
+   $.ajax({
+    url: `api/resources/${resid}/${userID}`,
+    method: 'DELETE',
+    data: user[0].id
+   }).then(function (resources) {
+
+   })
+
+});
+
+
+
+
 
 $(document).on ('click', '.favourite', function(event) {
     event.preventDefault();
@@ -274,7 +354,6 @@ $(document).on ('click', '.favourite', function(event) {
 
 
 loadResources();
-
 });
 
 

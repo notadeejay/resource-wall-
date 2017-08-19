@@ -19,7 +19,13 @@ article .articleHeader {
 }
 
 article .articleHeader h5 {
-    padding-top: 10px;
+    padding-top: 5px;
+    width: 250px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 article .articleBody {
@@ -43,7 +49,6 @@ article i {
 }
 
 article i:hover {
-    color: #8777DB;
     transform: scale(1.1);
 }
 
@@ -53,14 +58,30 @@ article i:hover {
     color: pink;
 }
 
-.like:hover {
-    color: hotpink;
-}
-
-.add {
-
+.add:hover {
+    color: #8777DB;
 }
 
 .liked {
     color: hotpink;
+}
+
+article .articleHeader a i {
+    text-align: right;
+    position: relative;
+    left: 160px;
+    bottom: 37px;
+    color: lightgrey;
+    transition: 0.5s all;
+    font-size: 30px;
+    display: none;
+}
+
+article .articleHeader a i:hover {
+    color: red;
+    transform: scale(1.2);
+}
+
+article .articleHeader a:hover{
+    text-decoration: none;
 }

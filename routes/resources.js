@@ -58,7 +58,6 @@ module.exports = (knex) => {
 router.get("/resources", function (req, res) {
   knex.select("*")
       .from("resources")
-      // .innerJoin("likes", "resources.id", "likes.resource_id")
       .then((results) => {
         res.json(results);
 
@@ -67,15 +66,16 @@ router.get("/resources", function (req, res) {
 
 router.get("/search", function (req, res) {
    let input = req.query.userinput
-
+   let inputUpper = input.toUpperCase()
+   console.log(inputUpper)
     knex.select("*")
       .from("resources")
-      .where('title', 'like', '%'+ input+ '%')
-      .orWhere('description', 'like', '%'+ input+ '%')
-      .orWhere('url', 'like', '%'+ input+ '%')
+      .whereRaw(`UPPER(title) LIKE '%${inputUpper}%'`)
+      .orWhereRaw(`UPPER(description) LIKE '%${inputUpper}%'`)
+      .orWhereRaw(`UPPER(url) LIKE '%${inputUpper}%'`)
       .then((results) => {
         res.json(results);
-
+        console.log(results)
     });
  });
 
@@ -101,6 +101,17 @@ router.get("/:catid", function (req, res) {
         res.json(results);
     });
  });
+
+router.delete("/:resid/:user", function (req,res) {
+   knex.select("*")
+  .from("resources")
+  .where("id", req.params.resid)
+  .andWhere("user_id", req.params.user)
+  .del()
+  .then((results) => {
+   res.status(204).end()
+  });
+});
 
 return router
 
