@@ -21,6 +21,7 @@ router.post("/:resid", function (req, res) {
     resource_id: req.params.resid,
     comment: req.body.usercomment
   }
+  console.log(comment)
 
    knex('comments')
    .insert(comment)
@@ -30,7 +31,7 @@ router.post("/:resid", function (req, res) {
       .where('resource_id', req.params.resid)
       .then((results) => {
         res.json(results)
-
+        console.log(results)
      });
    });
 

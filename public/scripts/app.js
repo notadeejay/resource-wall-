@@ -1,6 +1,6 @@
 const generateHTML = (obj) => {
   const html = `
-      <div class ="grid-item">
+      <div class ="grid-item" data-resid="${obj.id}"">
         <article>
                 <div class = 'articleHeader'>
                     <h5>${obj.title}</h5>
@@ -18,16 +18,7 @@ const generateHTML = (obj) => {
   return html;
 }
 
-const generateComments = (obj) => {
-  const html = `
-            <div id='editCard'>
-              <h4>add comments</h4>
-              <input type='text' name="commentinput" placeholder="comment">
-              <span class = "comments"></span>
-              <button id='exit'>exit</button>
-            </div>`;
-  return html;
-}
+
 
 $(() => {
 
@@ -150,19 +141,19 @@ $('.grid').isotope({
 
 $('#grid').on('click', '.commentsbox', function(e) {
   e.preventDefault();
+  let $this = $(this)
   let data = $(this).data('resource')
    $.ajax ({
      url:`/api/comments/${data}`,
      method: "GET",
    }).then(function (results) {
-
         $.colorbox({
           html: `<div id='editCard'>
           <h4>comments</h4><br />${renderInfo(results)}
           <form role="form" id="addcomment">
           <input type=text name="usercomment">
-          <input type=submit class="btn btn-info"></button></div>
-          </form>`,     // generateInfo(obj)
+          <input type=submit class="btn btn-info submit" data-resid="${$this.data('resource')}"></button></div>
+          </form>`,
           width: 500,
           transition: "elastic"
        });
@@ -170,19 +161,30 @@ $('#grid').on('click', '.commentsbox', function(e) {
 
 });
 
+
 $(document).on ('submit', '#addcomment', function(event) {
   event.preventDefault();
   let data = $(this).serialize()
-  let resid = $('.commentsbox').data('resource')
+  let resid = $(this).children('.submit').data('resid')
 
     $.ajax({
       url: `/api/comments/${resid}`,
       method: 'POST',
       data: data
     }).then(function (results){
-         renderInfo(results)
-    })
-})
+      $.colorbox({
+          html: `<div id='editCard'>
+          <h4>comments</h4><br />${renderInfo(results)}
+          <form role="form" id="addcomment">
+          <input type=text name="usercomment">
+          <input type=submit class="btn btn-info" data-resid="${results[0].resource_id}"></button></div>
+          </form>`,
+          width: 500,
+          transition: "elastic"
+       });
+   });
+ })
+
 
 const generateComments = (obj) => {
   const html = `
