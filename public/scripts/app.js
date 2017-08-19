@@ -103,12 +103,14 @@ $("#search").on("submit", function(event) {
 $("#edit").on("submit", function(event) {
   let data = $(this).serialize();
   $("#edit").trigger("reset");
+  swal("Good job!", "Your profile has been updated", "success")
   event.preventDefault();
   $.ajax({
     url: "/api/users/edit",
     method: "PUT",
     data: data,
   }).then(function (resources) {
+
   })
 });
 
@@ -123,6 +125,12 @@ $('.grid').isotope({
 
   $('#searchButton').click(function() {
     $('#search').animate({width: 'toggle'});
+    swal({
+        title: "Error!",
+        text: "Here's my error message!",
+        type: "error",
+        confirmButtonText: "Cool"
+      });
   })
 
 //RENDER RESOURCES
