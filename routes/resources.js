@@ -93,6 +93,17 @@ router.get("/:catid", function (req, res) {
     });
  });
 
+router.delete("/:resid/:user", function (req,res) {
+   knex.select("*")
+  .from("resources")
+  .where("id", req.params.resid)
+  .andWhere("user_id", req.params.user)
+  .del()
+  .then((results) => {
+   res.status(204).end()
+  });
+});
+
 return router
 
 }
