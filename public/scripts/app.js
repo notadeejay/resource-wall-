@@ -1,25 +1,23 @@
 const generateHTML = (obj) => {
   const html = `
-      <div class ="grid-item">
-        <article data-owner="${obj.user_id}" class="resource">
+      <div class ="grid-item" data-resid="${obj.id}"">
+        <article>
                 <div class = 'articleHeader'>
                     <h5>${obj.title}</h5>
-                    <a href='#'><i class="add material-icons" id="delete" data-resID='${obj.id}'>close</i></a>
-                    <p>test</p>
                 </div>
-                <a href="${obj.url}" target="_blank">
                 <div class = 'articleBody'>
                   <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
                 </div>
-                </a>
                 <div class = 'articleFooter clearfix'>
                    <a href='#' class='favourite' id='R${obj.id}' data-resID='${obj.id}'><i class="like material-icons">favorite</i></a>
-                   <a href='#' class="commentsbox" data-resource='${obj.id}'><span><i class="add material-icons">insert_comment</i></span></a>
+                  <span class = "test"> </span>
+                   <a href='#' class="commentsbox" data-resource='${obj.id}'><span><i class="add material-icons">add_circle</i></span></a>
                 </footer>
             </article>
         </div>`
   return html;
 }
+
 
 
 $(() => {
@@ -35,7 +33,6 @@ $(() => {
           data: data,
       }).then(function (result) {
         window.location.href = "/resources"
-        getCurrentUser();
       });
   });
 
@@ -50,20 +47,8 @@ $(() => {
         data: data,
     }).then(function (result) {
       window.location.href = "/resources"
-      getCurrentUser();
     });
   });
-
-const getCurrentUser = () => {
-  $.ajax({
-    url: "/api/users",
-    method: "GET"
-  }).then(function (result) {
-    localStorage.setItem("currentUser", JSON.stringify(result))
-  })
-}
-
-$()
 
 //LOGOUT HANDLER
   $(".logoutbutton").on("click", function (event) {
@@ -156,19 +141,19 @@ $('.grid').isotope({
 
 $('#grid').on('click', '.commentsbox', function(e) {
   e.preventDefault();
+  let $this = $(this)
   let data = $(this).data('resource')
    $.ajax ({
      url:`/api/comments/${data}`,
      method: "GET",
    }).then(function (results) {
-
         $.colorbox({
           html: `<div id='editCard'>
           <h4>comments</h4><br />${renderInfo(results)}
           <form role="form" id="addcomment">
           <input type=text name="usercomment">
-          <input type=submit class="btn btn-info"></button></div>
-          </form>`,     // generateInfo(obj)
+          <input type=submit class="btn btn-info submit" data-resid="${$this.data('resource')}"></button></div>
+          </form>`,
           width: 500,
           transition: "elastic"
        });
@@ -176,28 +161,30 @@ $('#grid').on('click', '.commentsbox', function(e) {
 
 });
 
+
 $(document).on ('submit', '#addcomment', function(event) {
   event.preventDefault();
   let data = $(this).serialize()
-  let resid = $('.commentsbox').data('resource')
+  let resid = $(this).children('.submit').data('resid')
 
     $.ajax({
       url: `/api/comments/${resid}`,
       method: 'POST',
       data: data
     }).then(function (results){
-         $.colorbox({
+      $.colorbox({
           html: `<div id='editCard'>
           <h4>comments</h4><br />${renderInfo(results)}
           <form role="form" id="addcomment">
           <input type=text name="usercomment">
-          <input type=submit class="btn btn-info"></button></div>
-          </form>`,     // generateInfo(obj)
+          <input type=submit class="btn btn-info" data-resid="${results[0].resource_id}"></button></div>
+          </form>`,
           width: 500,
           transition: "elastic"
        });
-    })
-})
+   });
+ })
+
 
 const generateComments = (obj) => {
   const html = `
@@ -282,37 +269,6 @@ $(".topfaves").click(function() {
        });
   });
 
-
-
-$(document).on('mouseenter mouseleave', '.resource', function (event) {
-   let user = JSON.parse(localStorage.getItem('currentUser'))
-   let userID = $(this).data('owner')
-
-   if(user[0].id == userID) {
-    $(this).find("#delete").toggle()
-   }
-
-});
-
-$(document).on('click', '#delete', function (event) {
-  const resid = $(this).data('resid')
-  const user = JSON.parse(localStorage.getItem('currentUser'))
-  const userID = user[0].id
-
-   $.ajax({
-    url: `api/resources/${resid}/${userID}`,
-    method: 'DELETE',
-    data: user[0].id
-   }).then(function (resources) {
-
-   })
-
-});
-
-
-
-
-
 $(document).on ('click', '.favourite', function(event) {
     event.preventDefault();
     const resid = $(this).data('resid')
@@ -354,6 +310,7 @@ $(document).on ('click', '.favourite', function(event) {
 
 
 loadResources();
+
 });
 
 
