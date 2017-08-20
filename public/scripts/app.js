@@ -192,7 +192,7 @@ $(document).on ('submit', '#addcomment', function(event) {
           <h4>comments</h4><br />${renderInfo(results)}
           <form role="form" id="addcomment">
           <input type=text name="usercomment">
-          <input type=submit class="btn btn-info" data-resid="${results[0].resource_id}"></button></div>
+          <input type=submit class="btn btn-info submit" data-resid="${resid}"></button></div>
           </form>`,
           width: 500,
           transition: "elastic"
@@ -313,10 +313,6 @@ $(document).on('click', '#delete', function (event) {
 
 
 
-
-
-
-
 $(document).on ('click', '.favourite', function(event) {
     event.preventDefault();
     const resid = $(this).data('resid')
@@ -354,8 +350,6 @@ $(document).on ('click', '.favourite', function(event) {
     }
 
   });
-
-
 
 loadResources();
 
