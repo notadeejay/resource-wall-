@@ -40,7 +40,16 @@ module.exports = (knex) => {
           request(`https://api.linkpreview.net/?key=599620a6888eff2fedf501c8f8271e520e3301cc25605&q=${req.body.url}`
             , function (error, response, body) {
           let preview = JSON.parse(body)
-          let image = preview.image
+          let imageURL = preview.image
+          let image = ''
+          let placeholderImage = "http://images.naldzgraphics.net/2015/09/8-flat-minimalist-icons.jpg"
+
+          if (imageURL.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+            image = imageURL
+          } else (
+              image = placeholderImage
+            )
+            
           knex('resources')
           .where('id', results[0].resource_id)
           .update('image', image)
