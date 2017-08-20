@@ -58,7 +58,9 @@ router.post("/register", function (req, res) {
 router.post("/login", function (req, res) {
   const emailReq = req.body.email
   const passwordReq = req.body.password
-
+  if(!emailReq || !passwordReq) {
+    res.status(403).send('Must enter valid username and password')
+  }
   knex('users')
   .select('password', 'id')
   .where({'email' : emailReq})
@@ -83,7 +85,7 @@ router.post("/login", function (req, res) {
 
  router.post("/logout", (req, res) => {
     req.session.destroy();
-    res.status(201).redirect("/");
+    res.redirect("/");
   });
 
   //EDIT USER PROFILE
