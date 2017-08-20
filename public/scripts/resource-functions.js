@@ -161,14 +161,32 @@ $(() => {
   $(document).on('click', '#delete', function (event) {
     const resid = $(this).data('resid')
     const user = JSON.parse(localStorage.getItem('currentUser'))
-   $.ajax({
-    url: `api/resources/${resid}/${user}`,
-    method: 'DELETE',
-    data: user
-   }).then(function (resources) {
-     renderResources(resources)
-     checkLikes()
-   })
+    deleteResource(resid);
+
+    function deleteResource(resid) {
+      swal({
+        title: "Are you sure?",
+        text: "Are you sure that you want to delete this photo?",
+        type: "warning",
+        showCancelButton: true,
+        closeOnConfirm: false,
+        confirmButtonText: "Yes, delete it!",
+        confirmButtonColor: "#ec6c62"
+      }, function() {
+
+           $.ajax({
+            url: `api/resources/${resid}/${user}`,
+            method: 'DELETE',
+            data: user
+           })
+           .then(function (resources) {
+             swal("Deleted!", "Your file was successfully deleted!", "success");
+             renderResources(resources)
+             checkLikes()
+           });
+
+           });
+  }
 });
 
 

@@ -115,13 +115,13 @@ module.exports = (knex) => {
 
 
   //EDIT USER PROFILE
-  router.put('/edit', function (req, res) {
-
+  router.put("/edit", function (req, res) {
+    let newpassword;
     if (req.body.password != "") {
       if (req.body.password === req.body.password_confirmation) {
-        let newpassword = bcrypt.hashSync(req.body.password, 10)
+        newpassword = bcrypt.hashSync(req.body.password, 10)
       } else {
-          alert(`Passwords do not match!`)
+        res.status(400).send(`Passwords do not match`)
       }
     }
 
@@ -138,9 +138,10 @@ module.exports = (knex) => {
       .where('id', req.session.user)
       .update(editUser)
       .then((result) => {
-        res.status(200).redirect("/resources")
-      }).catch(function(error) {
 
+        res.status(200).send()
+
+      }).catch(function(error) {
       console.log(error);
 
       });

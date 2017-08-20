@@ -68,16 +68,28 @@ $(() => {
   $("#edit").on("submit", function(event) {
     let data = $(this).serialize();
     $("#edit").trigger("reset");
-    swal("Good job!", "Your profile has been updated", "success")
     event.preventDefault();
-
     $.ajax({
       url: "/api/users/edit",
       method: "PUT",
       data: data,
     }).then(function (resources) {
-       swal("Success!", "Your profile has been updated!", "success")
-    })
+
+       setTimeout(function () {
+            swal({
+              title: "Success!",
+              text: "Your profile has been updated",
+              type: "success",
+              confirmButtonText: "OK"
+            },
+
+            function(isConfirm){
+              if (isConfirm) {
+                window.location.href = "/resources";
+              }
+            });
+        }, 1000);
+     })
   });
 
 });
