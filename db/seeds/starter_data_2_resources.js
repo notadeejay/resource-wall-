@@ -1,10 +1,8 @@
 
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
   return knex('resources').del()
     .then(function () {
       return Promise.all([
-        // Inserts seed entries
         knex('resources').insert(
           {
             title: 'Purpose of Life?',
