@@ -61,11 +61,21 @@ $(() => {
     url: "/api/users",
     method: "GET"
   }).then(function (result) {
-    // let name = result[0].first_name
+    let name = result[0].first_name
+    localStorage.setItem ("userName", name)
     localStorage.setItem("currentUser", result[0].id)
   })
 
 }
+
+const loadUsername = () => {
+  let name = localStorage.getItem('userName');
+  let low_name = name.toLowerCase()
+    $("#stupid").text("hello " + low_name)
+    console.log(name)
+}
+
+loadUsername()
 
 //LOGOUT HANDLER
   $(".logoutbutton").on("click", function (event) {
