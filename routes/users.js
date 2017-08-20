@@ -7,12 +7,12 @@ const bcrypt = require('bcrypt');
 module.exports = (knex) => {
 
 router.get("/", function(req, res) {
-  knex.select("id")
+  knex.select("id", "first_name")
   .from("users")
   .where("id", req.session.user)
   .then((result) => {
     res.json(result)
-    console.log(result)
+
 }).catch(function(error) {
     console.log(error);
   });
@@ -50,6 +50,7 @@ router.post("/register", function (req, res) {
       .returning(['id', 'first_name'])
       .then((result) => {
         req.session.user = result[0].id;
+        req.session.name = result[0].first_name
         res.status(200).redirect('/resources')
       })
 
@@ -62,7 +63,7 @@ router.post("/login", function (req, res) {
     res.status(403).send('Must enter valid username and password')
   }
   knex('users')
-  .select('password', 'id')
+  .select('password', 'id', 'first_name')
   .where({'email' : emailReq})
   .then(function(result) {
     if (!result || !result[0])  {  // NOT FOUND!
@@ -71,6 +72,7 @@ router.post("/login", function (req, res) {
     var pass = result[0].password;
     if(bcrypt.compareSync(passwordReq, pass)){
      req.session.user = result[0].id
+     req.session.name = result[0].name
      res.status(200).redirect("/resources")
 
      console.log('Success')

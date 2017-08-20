@@ -5,11 +5,10 @@ const generateHTML = (obj) => {
                 <div class = 'articleHeader'>
                     <h5>${obj.title}</h5>
                     <a href='#'><i class="add material-icons" id="delete" data-resID='${obj.id}'>close</i></a>
-                    <p>test</p>
                 </div>
                 <a href="${obj.url}" target="_blank">
                 <div class = 'articleBody'>
-                  <img src="http://eskipaper.com/images/modern-wallpaper-8.jpg">
+                  <img src="${obj.image}">
                 </div>
                 </a>
                 <div class = 'articleFooter clearfix'>
@@ -36,6 +35,7 @@ $(() => {
           data: data,
       }).then(function (result) {
         window.location.href = "/resources"
+        getCurrentUser();
       });
   });
 
@@ -49,6 +49,7 @@ $(() => {
         method: "POST",
         data: data,
     }).then(function (result) {
+      console.log(result)
       window.location.href = "/resources"
        getCurrentUser();
     });
@@ -60,9 +61,21 @@ $(() => {
     url: "/api/users",
     method: "GET"
   }).then(function (result) {
-    localStorage.setItem("currentUser", JSON.stringify(result))
+    let name = result[0].first_name
+    localStorage.setItem ("userName", name)
+    localStorage.setItem("currentUser", result[0].id)
   })
+
 }
+
+const loadUsername = () => {
+  let name = localStorage.getItem('userName');
+  let low_name = name.toLowerCase()
+    $("#stupid").text("hello " + low_name)
+    console.log(name)
+}
+
+loadUsername()
 
 //LOGOUT HANDLER
   $(".logoutbutton").on("click", function (event) {
@@ -85,6 +98,10 @@ const checkLikes = () => {
            }
         }
 }
+
+$('.all').click(function(event){
+  loadResources();
+})
 
 const loadResources = () => {
 $.ajax({
@@ -202,7 +219,7 @@ $(document).on ('submit', '#addcomment', function(event) {
 
 const generateComments = (obj) => {
   const html = `
-              <span class = "comments">${obj.comment}</span> `;
+              <span class = "comments">${obj.comment}</span> <br> `;
   return html;
 }
 
@@ -289,7 +306,7 @@ $(document).on('mouseenter mouseleave', '.resource', function (event) {
    let user = JSON.parse(localStorage.getItem('currentUser'))
    let userID = $(this).data('owner')
 
-   if(user[0].id == userID) {
+   if(user == userID) {
     $(this).find("#delete").toggle()
    }
 
@@ -298,14 +315,16 @@ $(document).on('mouseenter mouseleave', '.resource', function (event) {
 $(document).on('click', '#delete', function (event) {
   const resid = $(this).data('resid')
   const user = JSON.parse(localStorage.getItem('currentUser'))
-  const userID = user[0].id
+
 
    $.ajax({
-    url: `api/resources/${resid}/${userID}`,
+    url: `api/resources/${resid}/${user}`,
     method: 'DELETE',
-    data: user[0].id
+    data: user
    }).then(function (resources) {
-
+     renderResources(resources)
+     checkLikes()
+       // window.location.href = "/resources"
    })
 
 });
