@@ -15,7 +15,7 @@ const generateHTML = (obj) => {
                 <div class = 'articleFooter clearfix'>
                    <a href='#' class='favourite' id='R${obj.id}' data-resID='${obj.id}'><i class="like material-icons">favorite</i></a>
                    <a href='#' class="commentsbox" data-resource='${obj.id}'><span><i class="add material-icons">insert_comment</i></span></a>
-                </footer>
+                </div>
             </article>
         </div>`
   return html;
@@ -154,6 +154,9 @@ $('.grid').isotope({
 }
 
 
+// remote inline overflow styling
+// onsubmit
+
 $('#grid').on('click', '.commentsbox', function(e) {
   e.preventDefault();
   let $this = $(this)
@@ -163,11 +166,17 @@ $('#grid').on('click', '.commentsbox', function(e) {
      method: "GET",
    }).then(function (results) {
         $.colorbox({
-          html: `<div id='editCard'>
-          <h4>comments</h4><br />${renderInfo(results)}
+          html: `<div id='editCard' onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
+          <div class='commentheader'>
+            <h2>comments</h2>
+            </div>
+            <div class='commentsRender'>
+              ${renderInfo(results)}
+            </div>
+            <div class='commentFooter'>
           <form role="form" id="addcomment">
-          <input type=text name="usercomment">
-          <input type=submit class="btn btn-info submit" data-resid="${$this.data('resource')}"></button></div>
+          <input class='styledForm' placeholder='enter comment' type=text name="usercomment">
+          <input type=submit class="btn submit" data-resid="${$this.data('resource')}"></div></button></div>
           </form>`,
           width: 500,
           transition: "elastic"
@@ -188,11 +197,17 @@ $(document).on ('submit', '#addcomment', function(event) {
       data: data
     }).then(function (results){
       $.colorbox({
-          html: `<div id='editCard'>
-          <h4>comments</h4><br />${renderInfo(results)}
+          html: `<div id='editCard' onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
+          <div class='commentheader'>          
+            <h2>comments</h2>
+            </div>
+            <div class='commentsRender'>
+              ${renderInfo(results)}
+            </div>
+            <div class='commentFooter'>
           <form role="form" id="addcomment">
-          <input type=text name="usercomment">
-          <input type=submit class="btn btn-info" data-resid="${results[0].resource_id}"></button></div>
+          <input type=text class='styledForm' placeholder='enter comment' name="usercomment">
+          <input type=submit class="btn submit" data-resid="${results[0].resource_id}"></div></button></div>
           </form>`,
           width: 500,
           transition: "elastic"
@@ -202,7 +217,7 @@ $(document).on ('submit', '#addcomment', function(event) {
 
 const generateComments = (obj) => {
   const html = `
-              <span class = "comments">${obj.comment}</span> `;
+              <div class = "comments">${obj.comment}</div>`;
   return html;
 }
 
@@ -210,7 +225,7 @@ const renderInfo = (data) => {
     let html = data
               .sort((a,b) => b.id - a.id)
               .map(generateComments)
-              .join('')
+              .join('<br />')
    return html
 
 }
@@ -309,7 +324,6 @@ $(document).on('click', '#delete', function (event) {
    })
 
 });
-
 
 
 
