@@ -41,6 +41,7 @@ module.exports = (knex) => {
             , function (error, response, body) {
           let preview = JSON.parse(body)
           let image = preview.image
+
           knex('resources')
           .where('id', results[0].resource_id)
           .update('image', image)
