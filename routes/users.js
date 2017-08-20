@@ -134,11 +134,10 @@ module.exports = (knex) => {
     }
 
 
-      knex('users')
+       knex('users')
       .where('id', req.session.user)
       .update(editUser)
       .then((result) => {
-
         res.status(200).redirect("/resources")
       }).catch(function(error) {
 
