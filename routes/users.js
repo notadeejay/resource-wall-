@@ -95,7 +95,7 @@ router.post("/login", function (req, res) {
 
       if (req.body.password != "") {
         if (req.body.password === req.body.password_confirmation) {
-          let newpassword = req.body.password
+          let newpassword = bcrypt.hashSync(req.body.password, 10)
         }
           else {
             alert(`Passwords do not match!`)
@@ -106,7 +106,7 @@ router.post("/login", function (req, res) {
           first_name: req.body.first_name || undefined,
           last_name: req.body.last_name || undefined,
           email: req.body.email || undefined,
-          password: req.body.password || undefined
+          password: newpassword || undefined
         }
 
            knex('users')
@@ -114,7 +114,7 @@ router.post("/login", function (req, res) {
           .update(editUser)
           .then((result) => {
             console.log(result)
-            res.status(200).send()
+            res.status(200).redirect("/resources")
           })
       });
 

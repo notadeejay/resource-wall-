@@ -142,7 +142,7 @@ $("#edit").on("submit", function(event) {
     method: "PUT",
     data: data,
   }).then(function (resources) {
-
+     swal("Success!", "Your profile has been updated!", "success")
   })
 });
 
