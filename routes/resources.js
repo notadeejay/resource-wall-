@@ -107,7 +107,12 @@ router.delete("/:resid/:user", function (req,res) {
   .andWhere("user_id", req.params.user)
   .del()
   .then((results) => {
-   res.status(204).end()
+    knex.select('*')
+    .from("resources")
+    .then((results) => {
+      res.json(results)
+    })
+
   });
 });
 
