@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
   res.render("index", templateVars);
 });
 
-//
+
 app.get("/resources", (req, res) => {
   if (req.session.user) {
   let templateVars = {
@@ -63,17 +63,6 @@ app.get("/resources", (req, res) => {
   }
   res.render("resources", templateVars);
 } else {
-  res.status(401).redirect("/");
-}
-});
-
-app.get("/myresources", (req, res) => {
-  if (req.session.user) {
-  let templateVars = {
-    user: req.session.user
-  }
-  res.render("myResources", templateVars);
-}else {
   res.status(401).redirect("/");
 }
 });
