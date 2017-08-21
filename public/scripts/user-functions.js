@@ -46,7 +46,7 @@ $(() => {
   const loadUsername = () => {
     let name     = localStorage.getItem('userName');
     let low_name = name.toLowerCase()
-      $("#stupid").text("hello " + low_name)
+      $("#username").text("hello " + low_name)
   }
 
   loadUsername()

@@ -5,19 +5,6 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-
-router.post("/:resID", function (req, res) {
-  let liked = {
-    resource_id: req.params.resID,
-    user_id: req.session.user
-  }
-       knex("likes")
-      .insert(liked)
-      .then((results) => {
-        res.json(results);
-    });
- });
-
 router.post('/:resid', function (req, res) {
        let liked = {
         user_id: req.session.user,

@@ -17,20 +17,18 @@ h2 {
 
 .newBody {
     padding: 25px;
+    input {
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+    span input {
+        font-size: 120%;
+        padding-top: 25px;
+        margin: 0 auto;
+        width: 350px;
+        display: block;
+    }
     
-}
-
-.newBody span input {
-    font-size: 120%;
-    padding-top: 25px;
-    margin: 0 auto;
-    width: 350px;
-    display: block;
-}
-
-.newBody input {
-    margin-top: 30px;
-    margin-left: 20px;
 }
 
 .newFooter {
@@ -46,10 +44,10 @@ h2 {
     font-size: 15px !important;
     padding-bottom: 7px !important;
     color: white;
-}
-
-.submitNewCard:hover {
+    &:hover {
     background: linear-gradient(to right, #6898F8,#8777DB);
+    
+    }
 }
 
 .radioButtons {

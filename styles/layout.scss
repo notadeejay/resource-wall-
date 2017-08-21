@@ -7,10 +7,6 @@ html {
   color: #ffffff;
 }
 
-body {
-  background-color: #212121;
-}
-
 header {
   background-color: #212121;
   color: white;
@@ -19,33 +15,85 @@ header {
   z-index: 999;
 }
 
-body .mainContainer .container {
-  width: 500px;
-  margin-top: 200px;
+body {
+  background-color: #212121;
+}
+
+.main {
+  padding-top: 25px;
+  min-height: calc(100vh - 75px);
+  margin-top: 75px;
+  padding: 25px;
+  background-color: #515151;
+  color: white;
+  position: absolute;
+  left: 300px;
+  right: 0px;
+  h1 {
+      margin-bottom: 25px;
+      text-align: center;
+  }
+  .row {
+      margin-bottom: 50px;        
+  }
+  img {
+      transform: 0.5s all;
+  }
+}
+
+.grid {
+  margin: 0 auto;
+}
+
+.grid-item {
+  float: left;
+}
+
+.grid-item--width2 {
+  width: 350px;
+}
+
+.grid-item--height2 {
+  height: 350px;
 }
 
 .mainContainer {
   position: relative;
   height: 100%;
+  .container {
+      width: 500px;
+      margin-top: 200px;
+  }
+  .sidebar {
+      padding-top: 5px !important;
+      text-align: center;
+      padding: 25px;
+      margin-top: 75px;
+      background-color: #212121;
+      color: white;
+      width: 300px;
+      position: fixed;
+      height: 100%;
+      a {
+          text-decoration: none;
+          color: #ffffff;
+      }
+      h3, h5 {
+          transition: 0.3s all;
+          margin-top: 20px;   
+      }
+      h3:hover {
+          color: #6898F8;                
+      }
+      h5:hover {
+          color: #8777DB;
+          transform: scale(1.2);
+      }
+  }
 }
 
-.mainContainer .sidebar a {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.mainContainer .sidebar h3, h5 {
-  transition: 0.3s all;
-}
-
-.mainContainer .sidebar a h3:hover {
-  color: #6898F8;
- 
-}
-
-.mainContainer .sidebar h5:hover {
-  color: #8777DB;
-  transform: scale(1.2);
+#search {
+  display: none;
 }
 
 .navbar {
@@ -53,23 +101,18 @@ body .mainContainer .container {
   margin: 0 auto;
   min-height: 75px;
   border-bottom: 1px solid white;
-}
-
-.dropdown-menu {
-  padding: 0 !important;
-}
-
-.navbar-nav > li > .dropdown-menu {
-  background-color: #212121;
-  border: 1px solid white;
-}
-
-.navbar-nav > li > .dropdown-menu > a {
-  color: white;
-}
-
-.navbar-nav > li > .dropdown-menu > a:hover {
-  background: linear-gradient(to right,#8777DB,#6898F8);
+  form {
+      margin-right: 100px;
+  }
+  #searchBar {
+      margin-top: 5px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid white;
+      display: none;
+      width: 300px;
+      color: white;
+  }
 }
 
 .navbar-brand {
@@ -80,12 +123,20 @@ body .mainContainer .container {
   margin-right: 100px;
 }
 
-.navbar form {
-  margin-right: 100px;
-}
-
-.navbar #searchBar {
-  margin-top: 5px;
+.navbar-nav {
+  li {
+      .dropdown-menu {
+          background-color: #212121;
+          padding: 0 !important;
+          border: 1px solid white;
+          a {
+              color: white;
+          }
+          a:hover {
+              background: linear-gradient(to right,#8777DB,#6898F8);                
+          }
+      }
+  }
 }
 
 .styledForm {
@@ -112,64 +163,7 @@ body .mainContainer .container {
 }
 
 .loginButton:hover {
-  background: linear-gradient(to right, #6898F8,#8777DB);
-}
-
-.sidebar {
-  padding-top: 5px !important;
-  text-align: center;
-  padding: 25px;
-  margin-top: 75px;
-  background-color: #212121;
-  color: white;
-  width: 300px;
-  position: fixed;
-  height: 100%;
-}
-
-#search {
-  display: none;
-}
-
-#searchBar {
-  background: none;
-  border: none;
-  border-bottom: 2px solid white;
-  display: none;
-  width: 300px;
-  color: white;
-}
-
-#searchBar:focus {
-  outline-width: 0;
-}
-
-.main {
-  padding-top: 25px;
-  min-height: calc(100vh - 75px);
-  margin-top: 75px;
-  padding: 25px;
-  background-color: #515151;
-  color: white;
-  position: absolute;
-  left: 300px;
-  right: 0px;
-}
-
-.sidebar h3 {
-  margin-top: 20px;
-}
-
-.tags {
-  margin-top: 30px;
-  margin-bottom: 50px;
-  border-top: 1px solid gray;
-  padding-top: 10px;
-  padding-bottom: 30px;
-}
-
-.tags h5 {
-  margin-top: 20px;
+    background: linear-gradient(to right, #6898F8,#8777DB);        
 }
 
 #categories {
@@ -178,51 +172,15 @@ body .mainContainer .container {
   border-top: 1px solid gray;
 }
 
-.main h1 {
-  margin-bottom: 25px;
-  text-align: center;
-}
-
-.main .row {
+.tags {
+  margin-top: 30px;
   margin-bottom: 50px;
-}
-
-.main img {
-  transition: all 0.5s;
-}
-
-
-.grid {
-  margin: 0 auto;
-}
-
-@media (max-width: 1909px) {
-  .grid {
-    max-width: 1170px;
+  border-top: 1px solid gray;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  h5 {
+      margin-top: 20px;
   }
-}
-
-@media (max-width: 1519px) {
-  .grid {
-    max-width: 780px;
-  }
-}
-
-@media (max-width: 1129px) {
-  .grid {
-    max-width: 390px;
-  }
-}
-
-.grid-item {
-  float: left;
-}
-
-.grid-item--width2 {
-  width: 350px;
-}
-.grid-item--height2 {
-   height: 350px;
 }
 
 .logo {
@@ -251,15 +209,6 @@ body .mainContainer .container {
   font-size: 36px;
 }
 
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: " ";
-  clear: both;
-  height: 0;
-}
-
 #editCard {
   background-color: #181818;
   color: white;
@@ -280,56 +229,26 @@ body .mainContainer .container {
   background-color: #212121 !important;
 }
 
-.selected {
-  transform: scale(1.2);
-  color: dodgerblue;
-}
-
 .grow:hover {
   transform: scale(1.15);
 }
 
-.commentheader {
-  background: linear-gradient(to right,#8777DB,#6898F8);
-  padding-top: 15px;
-  padding: 20px;
+@media (max-width: 1909px) {
+  .grid {
+    max-width: 1170px;
+  }
 }
 
-.commentsRender {
-  padding: 15px;
-  max-height: 500px;
-  overflow: scroll;
-  
+@media (max-width: 1519px) {
+  .grid {
+      max-width: 780px;
+  }
 }
 
-.comments {
-  margin: 0 auto;
-  width: 375px !important;
-  padding-bottom: 40px;
-  padding-top: 20px;
-  border-bottom: 1px solid white !important;
-}
-
-.commentFooter {
-  margin-top: 25px;
-  padding-bottom: 25px;
-}
-
-.commentFooter .styledForm {
-  width: 250px;
-}
-
-.commentFooter .submit {
-  background: linear-gradient(to right,#8777DB,#6898F8);
-  height: 15px;
-  line-height: 7px;
-  font-size: 15px !important;
-  padding-bottom: 7px !important;
-  color: white;
-}
-
-.commentFooter .submit:hover {
-  background: linear-gradient(to right, #6898F8,#8777DB);
+@media (max-width: 1129px) {
+  .grid {
+      max-width: 390px;
+  }
 }
 
 .greeting {
@@ -338,4 +257,13 @@ body .mainContainer .container {
   overflow: hidden;
   margin: 0 auto;
   height: 35px;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }

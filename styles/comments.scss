@@ -1,0 +1,38 @@
+.comments {
+    margin: 0 auto;
+    width: 375px !important;
+    padding-bottom: 40px;
+    padding-top: 20px;
+    border-bottom: 1px solid white !important;
+}
+  
+.commentheader {
+    background: linear-gradient(to right,#8777DB,#6898F8);
+    padding-top: 15px;
+    padding: 20px;
+}
+  
+.commentFooter {
+    margin-top: 25px;
+    padding-bottom: 25px;
+    .styledForm {
+        width: 250px;
+    }
+    .submit {
+        background: linear-gradient(to right,#8777DB,#6898F8);
+        height: 15px;
+        line-height: 7px;
+        font-size: 15px !important;
+        padding-bottom: 7px !important;
+        color: white;
+    }
+    .submit:hover {
+        background: linear-gradient(to right, #6898F8,#8777DB);        
+    }
+}
+  
+.commentsRender {
+    padding: 15px;
+    max-height: 500px;
+    overflow: scroll;
+}

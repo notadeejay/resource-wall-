@@ -5,84 +5,72 @@ article {
     margin: 15px;
     overflow: hidden;
     opacity: 0.8;
+    &:hover {
+        opacity: 1;
+        box-shadow: 4px 4px 10px #171717;
+    }
+    .articleHeader {
+        background: linear-gradient(to right,#8777DB,#6898F8);
+        padding: 10px;
+        height: 50px;
+        h5 {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            width: 250px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            text-overflow: clip;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        a i {
+            text-align: right;
+            position: relative;
+            left: 160px;
+            bottom: 42px;
+            color: lightgrey;
+            transition: 0.5s all;
+            font-size: 30px;
+            display: none;
+        }
+        a i:hover {
+            color: red;
+            transform: scale(1.2);
+        }
+        a:hover {
+            text-decoration: none;   
+        }
+    }
+    .articleBody{
+        height: 150px;
+    }
+    .articleFooter{
+        padding: 10px;
+        color: black;
+        text-align: right;
+        height: 55px;
+    }
+    img {
+    max-width: 360px;    
+    }
+    i {
+        color: #6898F8;
+        transition: all 0.5s;
+    }
+    i:hover {
+        transform: scale(1.1);
+    }
 }
-
-article:hover {
-    opacity: 1;
-    box-shadow: 4px 4px 10px #171717;
-}
-
-article .articleHeader {
-    background: linear-gradient(to right,#8777DB,#6898F8);
-    padding: 10px;
-    height: 50px;
-}
-
-article .articleHeader h5 {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    width: 250px;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    text-overflow: clip;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-article .articleBody {
-    height: 150px;
-}
-
-article .articleFooter {    
-    padding: 10px;
-    color: black;
-    text-align: right;
-    height: 55px;
-}
-
-article img {
-    max-width: 360px;
-}
-
-article i {
-    color: #6898F8;
-    transition: all 0.5s;
-}
-
-article i:hover {
-    transform: scale(1.1);
-}
-
 
 .like {
     margin-right: 263px;
     color: pink;
 }
 
-.add:hover {
-    color: #8777DB;
-}
-
 .liked {
     color: hotpink;
 }
 
-article .articleHeader a i {
-    text-align: right;
-    position: relative;
-    left: 160px;
-    bottom: 42px;
-    color: lightgrey;
-    transition: 0.5s all;
-    font-size: 30px;
-    display: none;
-}
-
-article .articleHeader a i:hover {
-    color: red;
-    transform: scale(1.2);
-}
-
-article .articleHeader a:hover{
-    text-decoration: none;
+.add:hover {
+    color: #8777DB;
 }
