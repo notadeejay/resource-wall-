@@ -1,9 +1,9 @@
-#Wallit
+# Wallit
 
-##Project Description
+## Project Description
 Wallit is a simple single-page app to let you save your favourite URLs from around the web, built using HTML, CSS, JS, jQuery, AJAX, Node, and Express.
 
-##Final Product
+## Final Product
 [![https://gyazo.com/0c89ee25f2f0b58ed4974dab5eabd8ed](https://i.gyazo.com/0c89ee25f2f0b58ed4974dab5eabd8ed.png)](https://gyazo.com/0c89ee25f2f0b58ed4974dab5eabd8ed)
 
 [![https://gyazo.com/85adbb4f59c632c3a48e58c528f9efb0](https://i.gyazo.com/85adbb4f59c632c3a48e58c528f9efb0.png)](https://gyazo.com/85adbb4f59c632c3a48e58c528f9efb0)
@@ -12,9 +12,7 @@ Wallit is a simple single-page app to let you save your favourite URLs from arou
 
 [![https://gyazo.com/bda09764bc3f6153e6c8b8a9c6fdd155](https://i.gyazo.com/bda09764bc3f6153e6c8b8a9c6fdd155.png)](https://gyazo.com/bda09764bc3f6153e6c8b8a9c6fdd155)
 
-[![https://gyazo.com/0a3669e6496c630b777ff66327b867f9](https://i.gyazo.com/0a3669e6496c630b777ff66327b867f9.png)](https://gyazo.com/0a3669e6496c630b777ff66327b867f9)
-
-##Getting started
+## Getting started
 **Install add dependencies using npm install**
 
 
