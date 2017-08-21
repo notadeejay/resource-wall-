@@ -38,7 +38,7 @@ body .mainContainer .container {
   transition: 0.3s all;
 }
 
-.mainContainer .sidebar h3:hover {
+.mainContainer .sidebar a h3:hover {
   color: #6898F8;
  
 }
@@ -157,14 +157,14 @@ body .mainContainer .container {
 }
 
 .sidebar h3 {
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .tags {
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 50px;
   border-top: 1px solid gray;
-  padding-top: 30px;
+  padding-top: 10px;
   padding-bottom: 30px;
 }
 
@@ -173,8 +173,8 @@ body .mainContainer .container {
 }
 
 #categories {
-  margin-top: 50px;
-  padding-top: 35px;
+  margin-top: 30px;
+  padding-top: 10px;
   border-top: 1px solid gray;
 }
 
@@ -261,7 +261,7 @@ body .mainContainer .container {
 }
 
 #editCard {
-  background-color: #212121;
+  background-color: #181818;
   color: white;
   text-align: center;
   box-shadow: 3px 3px 3px black;
@@ -273,7 +273,7 @@ body .mainContainer .container {
 
 #cboxOverlay {
   background-color: black !important;
-  opacity: 0.6 !important;
+  opacity: 0.5 !important;
 }
 
 #cboxContent  {
@@ -330,4 +330,12 @@ body .mainContainer .container {
 
 .commentFooter .submit:hover {
   background: linear-gradient(to right, #6898F8,#8777DB);
+}
+
+.greeting {
+  color: #8777DB;
+  max-width: 250px;
+  overflow: hidden;
+  margin: 0 auto;
+  height: 35px;
 }

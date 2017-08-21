@@ -166,7 +166,7 @@ $(() => {
     function deleteResource(resid) {
       swal({
         title: "Are you sure?",
-        text: "Are you sure that you want to delete this photo?",
+        text: "Are you sure that you want to delete this card?",
         type: "warning",
         showCancelButton: true,
         closeOnConfirm: false,
