@@ -49,6 +49,9 @@ app.use("/api/comments", commentRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
+  if(req.session.user){
+    res.redirect("/resources");
+  }
   let templateVars = {
     user: req.session.user
   }
@@ -87,6 +90,10 @@ app.get("/profile", (req, res) => {
   } else {
   res.status(401).redirect("/");
 }
+});
+
+app.get("/:url", (req, res) => {
+  res.redirect("/");
 });
 
 app.listen(PORT, () => {
