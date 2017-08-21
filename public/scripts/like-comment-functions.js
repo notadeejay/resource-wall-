@@ -8,7 +8,7 @@ $(() => {
    $.ajax ({
      url:`/api/comments/${data}`,
      method: "GET",
-   }).then(function (results) {
+   }).then((results) => {
         $.colorbox({
           html: `<div id='editCard' onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
           <div class='commentheader'>
@@ -32,14 +32,14 @@ $(() => {
   //ADD NEW COMMENT
   $(document).on ('submit', '#addcomment', function(event) {
   event.preventDefault();
-  let data = $(this).serialize()
+  let data  = $(this).serialize()
   let resid = $(this).children('.submit').data('resid')
 
     $.ajax({
       url: `/api/comments/${resid}`,
       method: 'POST',
       data: data
-    }).then(function (results){
+    }).then((results) => {
       $.colorbox({
           html: `<div id='editCard' onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
           <div class='commentheader'>
@@ -86,7 +86,7 @@ $(() => {
 
     const resid = $(this).data('resid')
     const $this = $(this)
-    const favs = [];
+    const favs  = [];
 
     $this.children('.like').toggleClass('liked')
 
@@ -110,7 +110,7 @@ $(() => {
         $.ajax({
           url: `/api/likes/${resid}`,
           method: "POST",
-        }).then(function (resources) {
+        }).then((resources) => {
 
            });
 
@@ -119,7 +119,7 @@ $(() => {
         $.ajax({
           url: `/api/likes/${resid}`,
           method: 'DELETE'
-        }).then(function (response) {
+        }).then((response) => {
 
            });
       }

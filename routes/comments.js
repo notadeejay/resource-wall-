@@ -12,7 +12,9 @@ module.exports = (knex) => {
     .where('resource_id', req.params.resid)
     .then((results) => {
       res.json(results)
-    })
+    }).catch((error) => {
+       console.log(error);
+    });
   });
 
 

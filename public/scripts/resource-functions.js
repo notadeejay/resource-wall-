@@ -59,7 +59,7 @@ $(() => {
           url: "/api/resources/search",
           method: "GET",
           data: data,
-           }).then(function (resources) {
+           }).then((resources) => {
             renderResources(resources)
             checkLikes()
             });
@@ -99,7 +99,7 @@ $(() => {
     $.ajax({
       url: "/api/resources/myresources",
       method: "GET",
-    }).then(function (resources) {
+    }).then((resources) => {
       renderResources(resources)
       checkLikes();
     });
@@ -113,7 +113,7 @@ $(() => {
     $.ajax({
       url: `/api/resources/${catid}`,
       method: "GET",
-    }).then(function (resources) {
+    }).then((resources) => {
      renderResources(resources)
      checkLikes();
    });
@@ -126,7 +126,7 @@ $(() => {
     $.ajax({
       url: `/api/likes/favourite`,
       method: "GET",
-    }).then(function (resources) {
+    }).then((resources) => {
      renderResources(resources)
      checkLikes();
    });
@@ -139,7 +139,7 @@ $(() => {
     $.ajax({
       url: `/api/likes/top`,
       method: "GET",
-    }).then(function (resources) {
+    }).then((resources) => {
       renderResources(resources)
       checkLikes();
    });
@@ -179,15 +179,14 @@ $(() => {
             method: 'DELETE',
             data: user
            })
-           .then(function (resources) {
+           .then((resources) => {
              swal("Deleted!", "Your file was successfully deleted!", "success");
              renderResources(resources)
              checkLikes()
            });
-
-           });
-  }
-});
+      });
+   }
+ });
 
 
 loadResources();

@@ -3,7 +3,7 @@ $(() => {
   //REGISTRATION HANDLER
   $("#registrationform").on("submit", function (event) {
       let $this = $(this)
-      let data = $(this).serialize()
+      let data  = $(this).serialize()
       event.preventDefault();
       $.ajax({
           url: "/api/users/register",
@@ -17,7 +17,7 @@ $(() => {
 
   //LOGIN HANDLER
   $("#loginform").on("submit", function(event) {
-    let data = $(this).serialize()
+    let data  = $(this).serialize()
     let $this = $(this)
     event.preventDefault();
     $.ajax({
@@ -27,7 +27,7 @@ $(() => {
     }).then(function (result) {
       console.log(result)
       window.location.href = "/resources"
-       getCurrentUser();
+      getCurrentUser();
     });
   });
 
@@ -44,7 +44,7 @@ $(() => {
  }
 
   const loadUsername = () => {
-    let name = localStorage.getItem('userName');
+    let name     = localStorage.getItem('userName');
     let low_name = name.toLowerCase()
       $("#stupid").text("hello " + low_name)
   }
@@ -85,6 +85,7 @@ $(() => {
 
             function(isConfirm){
               if (isConfirm) {
+                getCurrentUser()
                 window.location.href = "/resources";
               }
             });

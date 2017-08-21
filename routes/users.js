@@ -14,7 +14,7 @@ module.exports = (knex) => {
     .where("id", req.session.user)
     .then((result) => {
       res.json(result)
-   }).catch(function(error) {
+   }).catch((error) => {
 
       console.log(error);
 
@@ -56,7 +56,7 @@ module.exports = (knex) => {
       req.session.name = result[0].first_name
       res.status(200).redirect('/resources')
 
-    }).catch(function(error) {
+    }).catch((error) =>{
 
       console.log(error);
      });
@@ -94,7 +94,7 @@ module.exports = (knex) => {
           res.status(401).send(`Unauthorized`)
 
         }
-      }).catch(function(error) {
+      }).catch((error) => {
 
       console.log(error);
 
@@ -137,12 +137,12 @@ module.exports = (knex) => {
        knex('users')
       .where('id', req.session.user)
       .update(editUser)
+      .returning(['first_name'])
       .then((result) => {
-
         res.status(200).send()
 
-      }).catch(function(error) {
-      console.log(error);
+      }).catch((error) => {
+        console.log(error);
 
       });
   });

@@ -28,7 +28,8 @@ router.post('/:resid', function (req, res) {
       .insert(liked)
       .then((results) => {
         res.json(results);
-
+    }).catch((error) => {
+        console.log(error);
     });
 });
 
@@ -40,9 +41,11 @@ router.delete('/:resid', function (req, res) {
       .del()
       .then((results) => {
         res.status(204).end()
-      })
-
+      }).catch((error) => {
+        console.log(error);
     });
+
+});
 
 router.get("/favourite", function (req, res) {
 
@@ -52,22 +55,19 @@ router.get("/favourite", function (req, res) {
       .where('likes.user_id', req.session.user)
       .then((results) => {
         res.json(results);
-        console.log(results)
+    }).catch((error) => {
+        console.log(error);
     });
 
  });
 
 router.get("/top", function (req, res) {
-// let query =`select *
-//         from resources
-//         join (select count(resource_id) as likes, resource_id
-//         from likes group by resource_id)
-//         as foo on id = resource_id order by likes desc limit 5`
       knex.raw("select * from resources join (select count(resource_id) as likes, resource_id from likes group by resource_id) as foo on id = resource_id order by likes desc limit 4")
       .then((results) => {
         res.json(results.rows);
-
-     });
+     }).catch((error) => {
+        console.log(error);
+    });
 });
 
 return router
