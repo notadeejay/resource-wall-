@@ -1,29 +1,30 @@
-# Node Skeleton
+#Wallit
 
-## Project Setup
+##Project Description
+Wallit is a simple single-page app to let you save your favourite URLs from around the web, built using HTML, CSS, JS, jQuery, AJAX, Node, and Express.
 
-1. Create your own empty repo on GitHub
-2. Clone this repository (do not fork)
-  - Suggestion: When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
+##Final Product
+[![https://gyazo.com/0c89ee25f2f0b58ed4974dab5eabd8ed](https://i.gyazo.com/0c89ee25f2f0b58ed4974dab5eabd8ed.png)](https://gyazo.com/0c89ee25f2f0b58ed4974dab5eabd8ed)
 
-## Getting Started
+[![https://gyazo.com/85adbb4f59c632c3a48e58c528f9efb0](https://i.gyazo.com/85adbb4f59c632c3a48e58c528f9efb0.png)](https://gyazo.com/85adbb4f59c632c3a48e58c528f9efb0)
 
-1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information
-3. Install dependencies: `npm i`
-4. Fix to binaries for sass: `npm rebuild node-sass`
-5. Run migrations: `npm run knex migrate:latest`
-  - Check the migrations folder to see what gets created in the DB
-6. Run the seed: `npm run knex seed:run`
-  - Check the seeds file to see what gets seeded in the DB
-7. Run the server: `npm run local`
-8. Visit `http://localhost:8080/`
+[![https://gyazo.com/c5b0c251ab4ce559e8e28c0e204134e5](https://i.gyazo.com/c5b0c251ab4ce559e8e28c0e204134e5.png)](https://gyazo.com/c5b0c251ab4ce559e8e28c0e204134e5)
 
-## Dependencies
+[![https://gyazo.com/bda09764bc3f6153e6c8b8a9c6fdd155](https://i.gyazo.com/bda09764bc3f6153e6c8b8a9c6fdd155.png)](https://gyazo.com/bda09764bc3f6153e6c8b8a9c6fdd155)
 
-- Node 5.10.x or above
-- NPM 3.8.x or above
+[![https://gyazo.com/0a3669e6496c630b777ff66327b867f9](https://i.gyazo.com/0a3669e6496c630b777ff66327b867f9.png)](https://gyazo.com/0a3669e6496c630b777ff66327b867f9)
+
+##Getting started
+**Install add dependencies using npm install**
+
+
+     npm install <dependencies> --save
+
+
+**Run the development web server using**
+
+      npm run local
+
+**View the app at localhost:8080**
+
+
